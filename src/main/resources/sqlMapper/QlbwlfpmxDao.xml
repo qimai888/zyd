@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qm.dao.QlbwlfpmxDao">
+  <resultMap id="BaseResultMap" type="com.qm.entity.Qlbwlfpmx">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="No" jdbcType="BIGINT" property="no" />
+    <result column="FBILLNOTPYEID" jdbcType="VARCHAR" property="FBILLNOTPYEID" />
+    <result column="FBILLNOTPYE" jdbcType="VARCHAR" property="FBILLNOTPYE" />
+    <result column="FMOBILLNO" jdbcType="VARCHAR" property="FMOBILLNO" />
+    <result column="FMOENTRYSEQ" jdbcType="BIGINT" property="FMOENTRYSEQ" />
+    <result column="FBILLTYPEID" jdbcType="VARCHAR" property="FBILLTYPEID" />
+    <result column="FBILLTYPE" jdbcType="VARCHAR" property="FBILLTYPE" />
+    <result column="FBILLNO" jdbcType="VARCHAR" property="FBILLNO" />
+    <result column="FPRDORGID" jdbcType="BIGINT" property="FPRDORGID" />
+    <result column="FPRDORG" jdbcType="VARCHAR" property="FPRDORG" />
+    <result column="FLOTID" jdbcType="BIGINT" property="FLOTID" />
+    <result column="FLOTNO" jdbcType="VARCHAR" property="FLOTNO" />
+    <result column="FBILLSEQ" jdbcType="VARCHAR" property="FBILLSEQ" />
+    <result column="FWORKSHOPID" jdbcType="BIGINT" property="FWORKSHOPID" />
+    <result column="FWORKSHOP" jdbcType="VARCHAR" property="FWORKSHOP" />
+    <result column="FCREATEDATE" jdbcType="TIMESTAMP" property="FCREATEDATE" />
+    <result column="FENDDATE" jdbcType="TIMESTAMP" property="FENDDATE" />
+    <result column="FMATERIALNUMBER" jdbcType="VARCHAR" property="FMATERIALNUMBER" />
+    <result column="FMATERIALNAME" jdbcType="VARCHAR" property="FMATERIALNAME" />
+    <result column="Fspecification" jdbcType="VARCHAR" property="fspecification" />
+    <result column="FMaterialattribute" jdbcType="VARCHAR" property="FMaterialattribute" />
+    <result column="FAPPQTY" jdbcType="DOUBLE" property="FAPPQTY" />
+    <result column="FALREADYAPPQTY" jdbcType="DOUBLE" property="FALREADYAPPQTY" />
+    <result column="FDOCUMENTSTATUSID" jdbcType="VARCHAR" property="FDOCUMENTSTATUSID" />
+    <result column="FDOCUMENTSTATUS" jdbcType="VARCHAR" property="FDOCUMENTSTATUS" />
+    <result column="FCompleteMateriaStatus" jdbcType="VARCHAR" property="FCompleteMateriaStatus" />
+    <result column="FResourceNo" jdbcType="BIGINT" property="FResourceNo" />
+    <result column="FCMATERIALID" jdbcType="BIGINT" property="FCMATERIALID" />
+    <result column="FCMATERIALNUMBER" jdbcType="VARCHAR" property="FCMATERIALNUMBER" />
+    <result column="FCMATERIALNAME" jdbcType="VARCHAR" property="FCMATERIALNAME" />
+    <result column="FCFspecification" jdbcType="VARCHAR" property="FCFspecification" />
+    <result column="FPLANERName" jdbcType="VARCHAR" property="FPLANERName" />
+    <result column="FCATEGORYType" jdbcType="VARCHAR" property="FCATEGORYType" />
+    <result column="FQuantityPerQTY" jdbcType="DOUBLE" property="FQuantityPerQTY" />
+    <result column="FACTUALQTY" jdbcType="DOUBLE" property="FACTUALQTY" />
+    <result column="StockQTY" jdbcType="DOUBLE" property="stockQTY" />
+    <result column="StockQTY_L" jdbcType="DOUBLE" property="stockQTY_L" />
+    <result column="UnderstockQTY" jdbcType="DOUBLE" property="understockQTY" />
+    <result column="PRDOrderQTY" jdbcType="DOUBLE" property="PRDOrderQTY" />
+    <result column="SUBOrderQTY" jdbcType="DOUBLE" property="SUBOrderQTY" />
+    <result column="POQTY" jdbcType="DOUBLE" property="POQTY" />
+    <result column="PRQTY" jdbcType="DOUBLE" property="PRQTY" />
+    <result column="PLNOrderQTY" jdbcType="DOUBLE" property="PLNOrderQTY" />
+    <result column="STOCKQTYSUM" jdbcType="DOUBLE" property="STOCKQTYSUM" />
+    <result column="PRDOrderQTYSUM" jdbcType="DOUBLE" property="PRDOrderQTYSUM" />
+    <result column="SUBOrderQTYSUM" jdbcType="DOUBLE" property="SUBOrderQTYSUM" />
+    <result column="POQTYSUM" jdbcType="DOUBLE" property="POQTYSUM" />
+    <result column="PRQTYSUM" jdbcType="DOUBLE" property="PRQTYSUM" />
+    <result column="PLNOrderQTYSUM" jdbcType="DOUBLE" property="PLNOrderQTYSUM" />
+    <result column="DemandQTY" jdbcType="DOUBLE" property="demandQTY" />
+    <result column="TotalDemandQTY" jdbcType="DOUBLE" property="totalDemandQTY" />
+    <result column="InspectionQTY" jdbcType="DOUBLE" property="inspectionQTY" />
+    <result column="FSRCTYPE" jdbcType="VARCHAR" property="FSRCTYPE" />
+    <result column="FSRCBILLNO" jdbcType="VARCHAR" property="FSRCBILLNO" />
+    <result column="FSEQ" jdbcType="BIGINT" property="FSEQ" />
+    <result column="FCREATORName" jdbcType="VARCHAR" property="FCREATORName" />
+    <result column="FDATE" jdbcType="TIMESTAMP" property="FDATE" />
+    <result column="RequisitionType" jdbcType="VARCHAR" property="requisitionType" />
+    <result column="RequisitionBillNo" jdbcType="VARCHAR" property="requisitionBillNo" />
+    <result column="RequisitionDate" jdbcType="TIMESTAMP" property="requisitionDate" />
+    <result column="DeliveryDate" jdbcType="TIMESTAMP" property="deliveryDate" />
+    <result column="FSRCTYPEID" jdbcType="BIGINT" property="FSRCTYPEID" />
+    <result column="FSRCStatus" jdbcType="VARCHAR" property="FSRCStatus" />
+    <result column="FMID" jdbcType="BIGINT" property="FMID" />
+    <result column="FMNUMBER" jdbcType="VARCHAR" property="FMNUMBER" />
+    <result column="FMQTY" jdbcType="DOUBLE" property="FMQTY" />
+    <result column="FMAllocatableQTY" jdbcType="DOUBLE" property="FMAllocatableQTY" />
+    <result column="FMAllocatedQTY" jdbcType="DOUBLE" property="FMAllocatedQTY" />
+    <result column="FMRemainingQTY" jdbcType="DOUBLE" property="FMRemainingQTY" />
+    <result column="SupplyUnit" jdbcType="VARCHAR" property="supplyUnit" />
+    <result column="SupplyPRDORGID" jdbcType="BIGINT" property="supplyPRDORGID" />
+    <result column="SupplyPRDORG" jdbcType="VARCHAR" property="supplyPRDORG" />
+    <result column="FNote" jdbcType="VARCHAR" property="FNote" />
+    <result column="DemandDate" jdbcType="TIMESTAMP" property="demandDate" />
+    <result column="ReplyDeliveryDate" jdbcType="TIMESTAMP" property="replyDeliveryDate" />
+    <result column="ReplyQTY" jdbcType="DOUBLE" property="replyQTY" />
+    <result column="ReplyDate" jdbcType="TIMESTAMP" property="replyDate" />
+    <result column="DateType" jdbcType="VARCHAR" property="dateType" />
+    <result column="ReplyNote" jdbcType="VARCHAR" property="replyNote" />
+    <result column="EnoughStatus" jdbcType="VARCHAR" property="enoughStatus" />
+    <result column="StartDate" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="ResourceID" jdbcType="BIGINT" property="resourceID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, No, FBILLNOTPYEID, FBILLNOTPYE, FMOBILLNO, FMOENTRYSEQ, FBILLTYPEID, FBILLTYPE, 
+    FBILLNO, FPRDORGID, FPRDORG, FLOTID, FLOTNO, FBILLSEQ, FWORKSHOPID, FWORKSHOP, FCREATEDATE, 
+    FENDDATE, FMATERIALNUMBER, FMATERIALNAME, Fspecification, FMaterialattribute, FAPPQTY, 
+    FALREADYAPPQTY, FDOCUMENTSTATUSID, FDOCUMENTSTATUS, FCompleteMateriaStatus, FResourceNo, 
+    FCMATERIALID, FCMATERIALNUMBER, FCMATERIALNAME, FCFspecification, FPLANERName, FCATEGORYType, 
+    FQuantityPerQTY, FACTUALQTY, StockQTY, StockQTY_L, UnderstockQTY, PRDOrderQTY, SUBOrderQTY, 
+    POQTY, PRQTY, PLNOrderQTY, STOCKQTYSUM, PRDOrderQTYSUM, SUBOrderQTYSUM, POQTYSUM, 
+    PRQTYSUM, PLNOrderQTYSUM, DemandQTY, TotalDemandQTY, InspectionQTY, FSRCTYPE, FSRCBILLNO, 
+    FSEQ, FCREATORName, FDATE, RequisitionType, RequisitionBillNo, RequisitionDate, DeliveryDate, 
+    FSRCTYPEID, FSRCStatus, FMID, FMNUMBER, FMQTY, FMAllocatableQTY, FMAllocatedQTY, 
+    FMRemainingQTY, SupplyUnit, SupplyPRDORGID, SupplyPRDORG, FNote, DemandDate, ReplyDeliveryDate, 
+    ReplyQTY, ReplyDate, DateType, ReplyNote, EnoughStatus, StartDate, ResourceID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from qlbwlfpmx
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from qlbwlfpmx
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qm.entity.Qlbwlfpmx">
+    insert into qlbwlfpmx (id, No, FBILLNOTPYEID, 
+      FBILLNOTPYE, FMOBILLNO, FMOENTRYSEQ, 
+      FBILLTYPEID, FBILLTYPE, FBILLNO, 
+      FPRDORGID, FPRDORG, FLOTID, 
+      FLOTNO, FBILLSEQ, FWORKSHOPID, 
+      FWORKSHOP, FCREATEDATE, FENDDATE, 
+      FMATERIALNUMBER, FMATERIALNAME, Fspecification, 
+      FMaterialattribute, FAPPQTY, FALREADYAPPQTY, 
+      FDOCUMENTSTATUSID, FDOCUMENTSTATUS, FCompleteMateriaStatus, 
+      FResourceNo, FCMATERIALID, FCMATERIALNUMBER, 
+      FCMATERIALNAME, FCFspecification, FPLANERName, 
+      FCATEGORYType, FQuantityPerQTY, FACTUALQTY, 
+      StockQTY, StockQTY_L, UnderstockQTY, 
+      PRDOrderQTY, SUBOrderQTY, POQTY, 
+      PRQTY, PLNOrderQTY, STOCKQTYSUM, 
+      PRDOrderQTYSUM, SUBOrderQTYSUM, POQTYSUM, 
+      PRQTYSUM, PLNOrderQTYSUM, DemandQTY, 
+      TotalDemandQTY, InspectionQTY, FSRCTYPE, 
+      FSRCBILLNO, FSEQ, FCREATORName, 
+      FDATE, RequisitionType, RequisitionBillNo, 
+      RequisitionDate, DeliveryDate, FSRCTYPEID, 
+      FSRCStatus, FMID, FMNUMBER, 
+      FMQTY, FMAllocatableQTY, FMAllocatedQTY, 
+      FMRemainingQTY, SupplyUnit, SupplyPRDORGID, 
+      SupplyPRDORG, FNote, DemandDate, 
+      ReplyDeliveryDate, ReplyQTY, ReplyDate, 
+      DateType, ReplyNote, EnoughStatus, 
+      StartDate, ResourceID)
+    values (#{id,jdbcType=BIGINT}, #{no,jdbcType=BIGINT}, #{FBILLNOTPYEID,jdbcType=VARCHAR}, 
+      #{FBILLNOTPYE,jdbcType=VARCHAR}, #{FMOBILLNO,jdbcType=VARCHAR}, #{FMOENTRYSEQ,jdbcType=BIGINT}, 
+      #{FBILLTYPEID,jdbcType=VARCHAR}, #{FBILLTYPE,jdbcType=VARCHAR}, #{FBILLNO,jdbcType=VARCHAR}, 
+      #{FPRDORGID,jdbcType=BIGINT}, #{FPRDORG,jdbcType=VARCHAR}, #{FLOTID,jdbcType=BIGINT}, 
+      #{FLOTNO,jdbcType=VARCHAR}, #{FBILLSEQ,jdbcType=VARCHAR}, #{FWORKSHOPID,jdbcType=BIGINT}, 
+      #{FWORKSHOP,jdbcType=VARCHAR}, #{FCREATEDATE,jdbcType=TIMESTAMP}, #{FENDDATE,jdbcType=TIMESTAMP}, 
+      #{FMATERIALNUMBER,jdbcType=VARCHAR}, #{FMATERIALNAME,jdbcType=VARCHAR}, #{fspecification,jdbcType=VARCHAR}, 
+      #{FMaterialattribute,jdbcType=VARCHAR}, #{FAPPQTY,jdbcType=DOUBLE}, #{FALREADYAPPQTY,jdbcType=DOUBLE}, 
+      #{FDOCUMENTSTATUSID,jdbcType=VARCHAR}, #{FDOCUMENTSTATUS,jdbcType=VARCHAR}, #{FCompleteMateriaStatus,jdbcType=VARCHAR}, 
+      #{FResourceNo,jdbcType=BIGINT}, #{FCMATERIALID,jdbcType=BIGINT}, #{FCMATERIALNUMBER,jdbcType=VARCHAR}, 
+      #{FCMATERIALNAME,jdbcType=VARCHAR}, #{FCFspecification,jdbcType=VARCHAR}, #{FPLANERName,jdbcType=VARCHAR}, 
+      #{FCATEGORYType,jdbcType=VARCHAR}, #{FQuantityPerQTY,jdbcType=DOUBLE}, #{FACTUALQTY,jdbcType=DOUBLE}, 
+      #{stockQTY,jdbcType=DOUBLE}, #{stockQTY_L,jdbcType=DOUBLE}, #{understockQTY,jdbcType=DOUBLE}, 
+      #{PRDOrderQTY,jdbcType=DOUBLE}, #{SUBOrderQTY,jdbcType=DOUBLE}, #{POQTY,jdbcType=DOUBLE}, 
+      #{PRQTY,jdbcType=DOUBLE}, #{PLNOrderQTY,jdbcType=DOUBLE}, #{STOCKQTYSUM,jdbcType=DOUBLE}, 
+      #{PRDOrderQTYSUM,jdbcType=DOUBLE}, #{SUBOrderQTYSUM,jdbcType=DOUBLE}, #{POQTYSUM,jdbcType=DOUBLE}, 
+      #{PRQTYSUM,jdbcType=DOUBLE}, #{PLNOrderQTYSUM,jdbcType=DOUBLE}, #{demandQTY,jdbcType=DOUBLE}, 
+      #{totalDemandQTY,jdbcType=DOUBLE}, #{inspectionQTY,jdbcType=DOUBLE}, #{FSRCTYPE,jdbcType=VARCHAR}, 
+      #{FSRCBILLNO,jdbcType=VARCHAR}, #{FSEQ,jdbcType=BIGINT}, #{FCREATORName,jdbcType=VARCHAR}, 
+      #{FDATE,jdbcType=TIMESTAMP}, #{requisitionType,jdbcType=VARCHAR}, #{requisitionBillNo,jdbcType=VARCHAR}, 
+      #{requisitionDate,jdbcType=TIMESTAMP}, #{deliveryDate,jdbcType=TIMESTAMP}, #{FSRCTYPEID,jdbcType=BIGINT}, 
+      #{FSRCStatus,jdbcType=VARCHAR}, #{FMID,jdbcType=BIGINT}, #{FMNUMBER,jdbcType=VARCHAR}, 
+      #{FMQTY,jdbcType=DOUBLE}, #{FMAllocatableQTY,jdbcType=DOUBLE}, #{FMAllocatedQTY,jdbcType=DOUBLE}, 
+      #{FMRemainingQTY,jdbcType=DOUBLE}, #{supplyUnit,jdbcType=VARCHAR}, #{supplyPRDORGID,jdbcType=BIGINT}, 
+      #{supplyPRDORG,jdbcType=VARCHAR}, #{FNote,jdbcType=VARCHAR}, #{demandDate,jdbcType=TIMESTAMP}, 
+      #{replyDeliveryDate,jdbcType=TIMESTAMP}, #{replyQTY,jdbcType=DOUBLE}, #{replyDate,jdbcType=TIMESTAMP}, 
+      #{dateType,jdbcType=VARCHAR}, #{replyNote,jdbcType=VARCHAR}, #{enoughStatus,jdbcType=VARCHAR}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{resourceID,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qm.entity.Qlbwlfpmx">
+    insert into qlbwlfpmx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        No,
+      </if>
+      <if test="FBILLNOTPYEID != null">
+        FBILLNOTPYEID,
+      </if>
+      <if test="FBILLNOTPYE != null">
+        FBILLNOTPYE,
+      </if>
+      <if test="FMOBILLNO != null">
+        FMOBILLNO,
+      </if>
+      <if test="FMOENTRYSEQ != null">
+        FMOENTRYSEQ,
+      </if>
+      <if test="FBILLTYPEID != null">
+        FBILLTYPEID,
+      </if>
+      <if test="FBILLTYPE != null">
+        FBILLTYPE,
+      </if>
+      <if test="FBILLNO != null">
+        FBILLNO,
+      </if>
+      <if test="FPRDORGID != null">
+        FPRDORGID,
+      </if>
+      <if test="FPRDORG != null">
+        FPRDORG,
+      </if>
+      <if test="FLOTID != null">
+        FLOTID,
+      </if>
+      <if test="FLOTNO != null">
+        FLOTNO,
+      </if>
+      <if test="FBILLSEQ != null">
+        FBILLSEQ,
+      </if>
+      <if test="FWORKSHOPID != null">
+        FWORKSHOPID,
+      </if>
+      <if test="FWORKSHOP != null">
+        FWORKSHOP,
+      </if>
+      <if test="FCREATEDATE != null">
+        FCREATEDATE,
+      </if>
+      <if test="FENDDATE != null">
+        FENDDATE,
+      </if>
+      <if test="FMATERIALNUMBER != null">
+        FMATERIALNUMBER,
+      </if>
+      <if test="FMATERIALNAME != null">
+        FMATERIALNAME,
+      </if>
+      <if test="fspecification != null">
+        Fspecification,
+      </if>
+      <if test="FMaterialattribute != null">
+        FMaterialattribute,
+      </if>
+      <if test="FAPPQTY != null">
+        FAPPQTY,
+      </if>
+      <if test="FALREADYAPPQTY != null">
+        FALREADYAPPQTY,
+      </if>
+      <if test="FDOCUMENTSTATUSID != null">
+        FDOCUMENTSTATUSID,
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        FDOCUMENTSTATUS,
+      </if>
+      <if test="FCompleteMateriaStatus != null">
+        FCompleteMateriaStatus,
+      </if>
+      <if test="FResourceNo != null">
+        FResourceNo,
+      </if>
+      <if test="FCMATERIALID != null">
+        FCMATERIALID,
+      </if>
+      <if test="FCMATERIALNUMBER != null">
+        FCMATERIALNUMBER,
+      </if>
+      <if test="FCMATERIALNAME != null">
+        FCMATERIALNAME,
+      </if>
+      <if test="FCFspecification != null">
+        FCFspecification,
+      </if>
+      <if test="FPLANERName != null">
+        FPLANERName,
+      </if>
+      <if test="FCATEGORYType != null">
+        FCATEGORYType,
+      </if>
+      <if test="FQuantityPerQTY != null">
+        FQuantityPerQTY,
+      </if>
+      <if test="FACTUALQTY != null">
+        FACTUALQTY,
+      </if>
+      <if test="stockQTY != null">
+        StockQTY,
+      </if>
+      <if test="stockQTY_L != null">
+        StockQTY_L,
+      </if>
+      <if test="understockQTY != null">
+        UnderstockQTY,
+      </if>
+      <if test="PRDOrderQTY != null">
+        PRDOrderQTY,
+      </if>
+      <if test="SUBOrderQTY != null">
+        SUBOrderQTY,
+      </if>
+      <if test="POQTY != null">
+        POQTY,
+      </if>
+      <if test="PRQTY != null">
+        PRQTY,
+      </if>
+      <if test="PLNOrderQTY != null">
+        PLNOrderQTY,
+      </if>
+      <if test="STOCKQTYSUM != null">
+        STOCKQTYSUM,
+      </if>
+      <if test="PRDOrderQTYSUM != null">
+        PRDOrderQTYSUM,
+      </if>
+      <if test="SUBOrderQTYSUM != null">
+        SUBOrderQTYSUM,
+      </if>
+      <if test="POQTYSUM != null">
+        POQTYSUM,
+      </if>
+      <if test="PRQTYSUM != null">
+        PRQTYSUM,
+      </if>
+      <if test="PLNOrderQTYSUM != null">
+        PLNOrderQTYSUM,
+      </if>
+      <if test="demandQTY != null">
+        DemandQTY,
+      </if>
+      <if test="totalDemandQTY != null">
+        TotalDemandQTY,
+      </if>
+      <if test="inspectionQTY != null">
+        InspectionQTY,
+      </if>
+      <if test="FSRCTYPE != null">
+        FSRCTYPE,
+      </if>
+      <if test="FSRCBILLNO != null">
+        FSRCBILLNO,
+      </if>
+      <if test="FSEQ != null">
+        FSEQ,
+      </if>
+      <if test="FCREATORName != null">
+        FCREATORName,
+      </if>
+      <if test="FDATE != null">
+        FDATE,
+      </if>
+      <if test="requisitionType != null">
+        RequisitionType,
+      </if>
+      <if test="requisitionBillNo != null">
+        RequisitionBillNo,
+      </if>
+      <if test="requisitionDate != null">
+        RequisitionDate,
+      </if>
+      <if test="deliveryDate != null">
+        DeliveryDate,
+      </if>
+      <if test="FSRCTYPEID != null">
+        FSRCTYPEID,
+      </if>
+      <if test="FSRCStatus != null">
+        FSRCStatus,
+      </if>
+      <if test="FMID != null">
+        FMID,
+      </if>
+      <if test="FMNUMBER != null">
+        FMNUMBER,
+      </if>
+      <if test="FMQTY != null">
+        FMQTY,
+      </if>
+      <if test="FMAllocatableQTY != null">
+        FMAllocatableQTY,
+      </if>
+      <if test="FMAllocatedQTY != null">
+        FMAllocatedQTY,
+      </if>
+      <if test="FMRemainingQTY != null">
+        FMRemainingQTY,
+      </if>
+      <if test="supplyUnit != null">
+        SupplyUnit,
+      </if>
+      <if test="supplyPRDORGID != null">
+        SupplyPRDORGID,
+      </if>
+      <if test="supplyPRDORG != null">
+        SupplyPRDORG,
+      </if>
+      <if test="FNote != null">
+        FNote,
+      </if>
+      <if test="demandDate != null">
+        DemandDate,
+      </if>
+      <if test="replyDeliveryDate != null">
+        ReplyDeliveryDate,
+      </if>
+      <if test="replyQTY != null">
+        ReplyQTY,
+      </if>
+      <if test="replyDate != null">
+        ReplyDate,
+      </if>
+      <if test="dateType != null">
+        DateType,
+      </if>
+      <if test="replyNote != null">
+        ReplyNote,
+      </if>
+      <if test="enoughStatus != null">
+        EnoughStatus,
+      </if>
+      <if test="startDate != null">
+        StartDate,
+      </if>
+      <if test="resourceID != null">
+        ResourceID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=BIGINT},
+      </if>
+      <if test="FBILLNOTPYEID != null">
+        #{FBILLNOTPYEID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLNOTPYE != null">
+        #{FBILLNOTPYE,jdbcType=VARCHAR},
+      </if>
+      <if test="FMOBILLNO != null">
+        #{FMOBILLNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FMOENTRYSEQ != null">
+        #{FMOENTRYSEQ,jdbcType=BIGINT},
+      </if>
+      <if test="FBILLTYPEID != null">
+        #{FBILLTYPEID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLTYPE != null">
+        #{FBILLTYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLNO != null">
+        #{FBILLNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FPRDORGID != null">
+        #{FPRDORGID,jdbcType=BIGINT},
+      </if>
+      <if test="FPRDORG != null">
+        #{FPRDORG,jdbcType=VARCHAR},
+      </if>
+      <if test="FLOTID != null">
+        #{FLOTID,jdbcType=BIGINT},
+      </if>
+      <if test="FLOTNO != null">
+        #{FLOTNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLSEQ != null">
+        #{FBILLSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="FWORKSHOPID != null">
+        #{FWORKSHOPID,jdbcType=BIGINT},
+      </if>
+      <if test="FWORKSHOP != null">
+        #{FWORKSHOP,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEDATE != null">
+        #{FCREATEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FENDDATE != null">
+        #{FENDDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FMATERIALNUMBER != null">
+        #{FMATERIALNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALNAME != null">
+        #{FMATERIALNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="fspecification != null">
+        #{fspecification,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialattribute != null">
+        #{FMaterialattribute,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPQTY != null">
+        #{FAPPQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FALREADYAPPQTY != null">
+        #{FALREADYAPPQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FDOCUMENTSTATUSID != null">
+        #{FDOCUMENTSTATUSID,jdbcType=VARCHAR},
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FCompleteMateriaStatus != null">
+        #{FCompleteMateriaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="FResourceNo != null">
+        #{FResourceNo,jdbcType=BIGINT},
+      </if>
+      <if test="FCMATERIALID != null">
+        #{FCMATERIALID,jdbcType=BIGINT},
+      </if>
+      <if test="FCMATERIALNUMBER != null">
+        #{FCMATERIALNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FCMATERIALNAME != null">
+        #{FCMATERIALNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="FCFspecification != null">
+        #{FCFspecification,jdbcType=VARCHAR},
+      </if>
+      <if test="FPLANERName != null">
+        #{FPLANERName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCATEGORYType != null">
+        #{FCATEGORYType,jdbcType=VARCHAR},
+      </if>
+      <if test="FQuantityPerQTY != null">
+        #{FQuantityPerQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FACTUALQTY != null">
+        #{FACTUALQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="stockQTY != null">
+        #{stockQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="stockQTY_L != null">
+        #{stockQTY_L,jdbcType=DOUBLE},
+      </if>
+      <if test="understockQTY != null">
+        #{understockQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="PRDOrderQTY != null">
+        #{PRDOrderQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="SUBOrderQTY != null">
+        #{SUBOrderQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="POQTY != null">
+        #{POQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="PRQTY != null">
+        #{PRQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="PLNOrderQTY != null">
+        #{PLNOrderQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="STOCKQTYSUM != null">
+        #{STOCKQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="PRDOrderQTYSUM != null">
+        #{PRDOrderQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="SUBOrderQTYSUM != null">
+        #{SUBOrderQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="POQTYSUM != null">
+        #{POQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="PRQTYSUM != null">
+        #{PRQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="PLNOrderQTYSUM != null">
+        #{PLNOrderQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="demandQTY != null">
+        #{demandQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="totalDemandQTY != null">
+        #{totalDemandQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="inspectionQTY != null">
+        #{inspectionQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FSRCTYPE != null">
+        #{FSRCTYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="FSRCBILLNO != null">
+        #{FSRCBILLNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FSEQ != null">
+        #{FSEQ,jdbcType=BIGINT},
+      </if>
+      <if test="FCREATORName != null">
+        #{FCREATORName,jdbcType=VARCHAR},
+      </if>
+      <if test="FDATE != null">
+        #{FDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requisitionType != null">
+        #{requisitionType,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionBillNo != null">
+        #{requisitionBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionDate != null">
+        #{requisitionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryDate != null">
+        #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FSRCTYPEID != null">
+        #{FSRCTYPEID,jdbcType=BIGINT},
+      </if>
+      <if test="FSRCStatus != null">
+        #{FSRCStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="FMID != null">
+        #{FMID,jdbcType=BIGINT},
+      </if>
+      <if test="FMNUMBER != null">
+        #{FMNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FMQTY != null">
+        #{FMQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FMAllocatableQTY != null">
+        #{FMAllocatableQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FMAllocatedQTY != null">
+        #{FMAllocatedQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FMRemainingQTY != null">
+        #{FMRemainingQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="supplyUnit != null">
+        #{supplyUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyPRDORGID != null">
+        #{supplyPRDORGID,jdbcType=BIGINT},
+      </if>
+      <if test="supplyPRDORG != null">
+        #{supplyPRDORG,jdbcType=VARCHAR},
+      </if>
+      <if test="FNote != null">
+        #{FNote,jdbcType=VARCHAR},
+      </if>
+      <if test="demandDate != null">
+        #{demandDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyDeliveryDate != null">
+        #{replyDeliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyQTY != null">
+        #{replyQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="replyDate != null">
+        #{replyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateType != null">
+        #{dateType,jdbcType=VARCHAR},
+      </if>
+      <if test="replyNote != null">
+        #{replyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="enoughStatus != null">
+        #{enoughStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resourceID != null">
+        #{resourceID,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qm.entity.Qlbwlfpmx">
+    update qlbwlfpmx
+    <set>
+      <if test="no != null">
+        No = #{no,jdbcType=BIGINT},
+      </if>
+      <if test="FBILLNOTPYEID != null">
+        FBILLNOTPYEID = #{FBILLNOTPYEID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLNOTPYE != null">
+        FBILLNOTPYE = #{FBILLNOTPYE,jdbcType=VARCHAR},
+      </if>
+      <if test="FMOBILLNO != null">
+        FMOBILLNO = #{FMOBILLNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FMOENTRYSEQ != null">
+        FMOENTRYSEQ = #{FMOENTRYSEQ,jdbcType=BIGINT},
+      </if>
+      <if test="FBILLTYPEID != null">
+        FBILLTYPEID = #{FBILLTYPEID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLTYPE != null">
+        FBILLTYPE = #{FBILLTYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLNO != null">
+        FBILLNO = #{FBILLNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FPRDORGID != null">
+        FPRDORGID = #{FPRDORGID,jdbcType=BIGINT},
+      </if>
+      <if test="FPRDORG != null">
+        FPRDORG = #{FPRDORG,jdbcType=VARCHAR},
+      </if>
+      <if test="FLOTID != null">
+        FLOTID = #{FLOTID,jdbcType=BIGINT},
+      </if>
+      <if test="FLOTNO != null">
+        FLOTNO = #{FLOTNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FBILLSEQ != null">
+        FBILLSEQ = #{FBILLSEQ,jdbcType=VARCHAR},
+      </if>
+      <if test="FWORKSHOPID != null">
+        FWORKSHOPID = #{FWORKSHOPID,jdbcType=BIGINT},
+      </if>
+      <if test="FWORKSHOP != null">
+        FWORKSHOP = #{FWORKSHOP,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEDATE != null">
+        FCREATEDATE = #{FCREATEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FENDDATE != null">
+        FENDDATE = #{FENDDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FMATERIALNUMBER != null">
+        FMATERIALNUMBER = #{FMATERIALNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALNAME != null">
+        FMATERIALNAME = #{FMATERIALNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="fspecification != null">
+        Fspecification = #{fspecification,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialattribute != null">
+        FMaterialattribute = #{FMaterialattribute,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPQTY != null">
+        FAPPQTY = #{FAPPQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FALREADYAPPQTY != null">
+        FALREADYAPPQTY = #{FALREADYAPPQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FDOCUMENTSTATUSID != null">
+        FDOCUMENTSTATUSID = #{FDOCUMENTSTATUSID,jdbcType=VARCHAR},
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        FDOCUMENTSTATUS = #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FCompleteMateriaStatus != null">
+        FCompleteMateriaStatus = #{FCompleteMateriaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="FResourceNo != null">
+        FResourceNo = #{FResourceNo,jdbcType=BIGINT},
+      </if>
+      <if test="FCMATERIALID != null">
+        FCMATERIALID = #{FCMATERIALID,jdbcType=BIGINT},
+      </if>
+      <if test="FCMATERIALNUMBER != null">
+        FCMATERIALNUMBER = #{FCMATERIALNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FCMATERIALNAME != null">
+        FCMATERIALNAME = #{FCMATERIALNAME,jdbcType=VARCHAR},
+      </if>
+      <if test="FCFspecification != null">
+        FCFspecification = #{FCFspecification,jdbcType=VARCHAR},
+      </if>
+      <if test="FPLANERName != null">
+        FPLANERName = #{FPLANERName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCATEGORYType != null">
+        FCATEGORYType = #{FCATEGORYType,jdbcType=VARCHAR},
+      </if>
+      <if test="FQuantityPerQTY != null">
+        FQuantityPerQTY = #{FQuantityPerQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FACTUALQTY != null">
+        FACTUALQTY = #{FACTUALQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="stockQTY != null">
+        StockQTY = #{stockQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="stockQTY_L != null">
+        StockQTY_L = #{stockQTY_L,jdbcType=DOUBLE},
+      </if>
+      <if test="understockQTY != null">
+        UnderstockQTY = #{understockQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="PRDOrderQTY != null">
+        PRDOrderQTY = #{PRDOrderQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="SUBOrderQTY != null">
+        SUBOrderQTY = #{SUBOrderQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="POQTY != null">
+        POQTY = #{POQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="PRQTY != null">
+        PRQTY = #{PRQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="PLNOrderQTY != null">
+        PLNOrderQTY = #{PLNOrderQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="STOCKQTYSUM != null">
+        STOCKQTYSUM = #{STOCKQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="PRDOrderQTYSUM != null">
+        PRDOrderQTYSUM = #{PRDOrderQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="SUBOrderQTYSUM != null">
+        SUBOrderQTYSUM = #{SUBOrderQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="POQTYSUM != null">
+        POQTYSUM = #{POQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="PRQTYSUM != null">
+        PRQTYSUM = #{PRQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="PLNOrderQTYSUM != null">
+        PLNOrderQTYSUM = #{PLNOrderQTYSUM,jdbcType=DOUBLE},
+      </if>
+      <if test="demandQTY != null">
+        DemandQTY = #{demandQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="totalDemandQTY != null">
+        TotalDemandQTY = #{totalDemandQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="inspectionQTY != null">
+        InspectionQTY = #{inspectionQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FSRCTYPE != null">
+        FSRCTYPE = #{FSRCTYPE,jdbcType=VARCHAR},
+      </if>
+      <if test="FSRCBILLNO != null">
+        FSRCBILLNO = #{FSRCBILLNO,jdbcType=VARCHAR},
+      </if>
+      <if test="FSEQ != null">
+        FSEQ = #{FSEQ,jdbcType=BIGINT},
+      </if>
+      <if test="FCREATORName != null">
+        FCREATORName = #{FCREATORName,jdbcType=VARCHAR},
+      </if>
+      <if test="FDATE != null">
+        FDATE = #{FDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requisitionType != null">
+        RequisitionType = #{requisitionType,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionBillNo != null">
+        RequisitionBillNo = #{requisitionBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="requisitionDate != null">
+        RequisitionDate = #{requisitionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryDate != null">
+        DeliveryDate = #{deliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FSRCTYPEID != null">
+        FSRCTYPEID = #{FSRCTYPEID,jdbcType=BIGINT},
+      </if>
+      <if test="FSRCStatus != null">
+        FSRCStatus = #{FSRCStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="FMID != null">
+        FMID = #{FMID,jdbcType=BIGINT},
+      </if>
+      <if test="FMNUMBER != null">
+        FMNUMBER = #{FMNUMBER,jdbcType=VARCHAR},
+      </if>
+      <if test="FMQTY != null">
+        FMQTY = #{FMQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FMAllocatableQTY != null">
+        FMAllocatableQTY = #{FMAllocatableQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FMAllocatedQTY != null">
+        FMAllocatedQTY = #{FMAllocatedQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="FMRemainingQTY != null">
+        FMRemainingQTY = #{FMRemainingQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="supplyUnit != null">
+        SupplyUnit = #{supplyUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyPRDORGID != null">
+        SupplyPRDORGID = #{supplyPRDORGID,jdbcType=BIGINT},
+      </if>
+      <if test="supplyPRDORG != null">
+        SupplyPRDORG = #{supplyPRDORG,jdbcType=VARCHAR},
+      </if>
+      <if test="FNote != null">
+        FNote = #{FNote,jdbcType=VARCHAR},
+      </if>
+      <if test="demandDate != null">
+        DemandDate = #{demandDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyDeliveryDate != null">
+        ReplyDeliveryDate = #{replyDeliveryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyQTY != null">
+        ReplyQTY = #{replyQTY,jdbcType=DOUBLE},
+      </if>
+      <if test="replyDate != null">
+        ReplyDate = #{replyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateType != null">
+        DateType = #{dateType,jdbcType=VARCHAR},
+      </if>
+      <if test="replyNote != null">
+        ReplyNote = #{replyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="enoughStatus != null">
+        EnoughStatus = #{enoughStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        StartDate = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resourceID != null">
+        ResourceID = #{resourceID,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qm.entity.Qlbwlfpmx">
+    update qlbwlfpmx
+    set No = #{no,jdbcType=BIGINT},
+      FBILLNOTPYEID = #{FBILLNOTPYEID,jdbcType=VARCHAR},
+      FBILLNOTPYE = #{FBILLNOTPYE,jdbcType=VARCHAR},
+      FMOBILLNO = #{FMOBILLNO,jdbcType=VARCHAR},
+      FMOENTRYSEQ = #{FMOENTRYSEQ,jdbcType=BIGINT},
+      FBILLTYPEID = #{FBILLTYPEID,jdbcType=VARCHAR},
+      FBILLTYPE = #{FBILLTYPE,jdbcType=VARCHAR},
+      FBILLNO = #{FBILLNO,jdbcType=VARCHAR},
+      FPRDORGID = #{FPRDORGID,jdbcType=BIGINT},
+      FPRDORG = #{FPRDORG,jdbcType=VARCHAR},
+      FLOTID = #{FLOTID,jdbcType=BIGINT},
+      FLOTNO = #{FLOTNO,jdbcType=VARCHAR},
+      FBILLSEQ = #{FBILLSEQ,jdbcType=VARCHAR},
+      FWORKSHOPID = #{FWORKSHOPID,jdbcType=BIGINT},
+      FWORKSHOP = #{FWORKSHOP,jdbcType=VARCHAR},
+      FCREATEDATE = #{FCREATEDATE,jdbcType=TIMESTAMP},
+      FENDDATE = #{FENDDATE,jdbcType=TIMESTAMP},
+      FMATERIALNUMBER = #{FMATERIALNUMBER,jdbcType=VARCHAR},
+      FMATERIALNAME = #{FMATERIALNAME,jdbcType=VARCHAR},
+      Fspecification = #{fspecification,jdbcType=VARCHAR},
+      FMaterialattribute = #{FMaterialattribute,jdbcType=VARCHAR},
+      FAPPQTY = #{FAPPQTY,jdbcType=DOUBLE},
+      FALREADYAPPQTY = #{FALREADYAPPQTY,jdbcType=DOUBLE},
+      FDOCUMENTSTATUSID = #{FDOCUMENTSTATUSID,jdbcType=VARCHAR},
+      FDOCUMENTSTATUS = #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      FCompleteMateriaStatus = #{FCompleteMateriaStatus,jdbcType=VARCHAR},
+      FResourceNo = #{FResourceNo,jdbcType=BIGINT},
+      FCMATERIALID = #{FCMATERIALID,jdbcType=BIGINT},
+      FCMATERIALNUMBER = #{FCMATERIALNUMBER,jdbcType=VARCHAR},
+      FCMATERIALNAME = #{FCMATERIALNAME,jdbcType=VARCHAR},
+      FCFspecification = #{FCFspecification,jdbcType=VARCHAR},
+      FPLANERName = #{FPLANERName,jdbcType=VARCHAR},
+      FCATEGORYType = #{FCATEGORYType,jdbcType=VARCHAR},
+      FQuantityPerQTY = #{FQuantityPerQTY,jdbcType=DOUBLE},
+      FACTUALQTY = #{FACTUALQTY,jdbcType=DOUBLE},
+      StockQTY = #{stockQTY,jdbcType=DOUBLE},
+      StockQTY_L = #{stockQTY_L,jdbcType=DOUBLE},
+      UnderstockQTY = #{understockQTY,jdbcType=DOUBLE},
+      PRDOrderQTY = #{PRDOrderQTY,jdbcType=DOUBLE},
+      SUBOrderQTY = #{SUBOrderQTY,jdbcType=DOUBLE},
+      POQTY = #{POQTY,jdbcType=DOUBLE},
+      PRQTY = #{PRQTY,jdbcType=DOUBLE},
+      PLNOrderQTY = #{PLNOrderQTY,jdbcType=DOUBLE},
+      STOCKQTYSUM = #{STOCKQTYSUM,jdbcType=DOUBLE},
+      PRDOrderQTYSUM = #{PRDOrderQTYSUM,jdbcType=DOUBLE},
+      SUBOrderQTYSUM = #{SUBOrderQTYSUM,jdbcType=DOUBLE},
+      POQTYSUM = #{POQTYSUM,jdbcType=DOUBLE},
+      PRQTYSUM = #{PRQTYSUM,jdbcType=DOUBLE},
+      PLNOrderQTYSUM = #{PLNOrderQTYSUM,jdbcType=DOUBLE},
+      DemandQTY = #{demandQTY,jdbcType=DOUBLE},
+      TotalDemandQTY = #{totalDemandQTY,jdbcType=DOUBLE},
+      InspectionQTY = #{inspectionQTY,jdbcType=DOUBLE},
+      FSRCTYPE = #{FSRCTYPE,jdbcType=VARCHAR},
+      FSRCBILLNO = #{FSRCBILLNO,jdbcType=VARCHAR},
+      FSEQ = #{FSEQ,jdbcType=BIGINT},
+      FCREATORName = #{FCREATORName,jdbcType=VARCHAR},
+      FDATE = #{FDATE,jdbcType=TIMESTAMP},
+      RequisitionType = #{requisitionType,jdbcType=VARCHAR},
+      RequisitionBillNo = #{requisitionBillNo,jdbcType=VARCHAR},
+      RequisitionDate = #{requisitionDate,jdbcType=TIMESTAMP},
+      DeliveryDate = #{deliveryDate,jdbcType=TIMESTAMP},
+      FSRCTYPEID = #{FSRCTYPEID,jdbcType=BIGINT},
+      FSRCStatus = #{FSRCStatus,jdbcType=VARCHAR},
+      FMID = #{FMID,jdbcType=BIGINT},
+      FMNUMBER = #{FMNUMBER,jdbcType=VARCHAR},
+      FMQTY = #{FMQTY,jdbcType=DOUBLE},
+      FMAllocatableQTY = #{FMAllocatableQTY,jdbcType=DOUBLE},
+      FMAllocatedQTY = #{FMAllocatedQTY,jdbcType=DOUBLE},
+      FMRemainingQTY = #{FMRemainingQTY,jdbcType=DOUBLE},
+      SupplyUnit = #{supplyUnit,jdbcType=VARCHAR},
+      SupplyPRDORGID = #{supplyPRDORGID,jdbcType=BIGINT},
+      SupplyPRDORG = #{supplyPRDORG,jdbcType=VARCHAR},
+      FNote = #{FNote,jdbcType=VARCHAR},
+      DemandDate = #{demandDate,jdbcType=TIMESTAMP},
+      ReplyDeliveryDate = #{replyDeliveryDate,jdbcType=TIMESTAMP},
+      ReplyQTY = #{replyQTY,jdbcType=DOUBLE},
+      ReplyDate = #{replyDate,jdbcType=TIMESTAMP},
+      DateType = #{dateType,jdbcType=VARCHAR},
+      ReplyNote = #{replyNote,jdbcType=VARCHAR},
+      EnoughStatus = #{enoughStatus,jdbcType=VARCHAR},
+      StartDate = #{startDate,jdbcType=TIMESTAMP},
+      ResourceID = #{resourceID,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="getList" parameterType="com.qm.entity.Qlbwlfpmx" resultType="com.qm.entity.Qlbwlfpmx">
+    select
+    <include refid="Base_Column_List" />
+    from qlbwlfpmx
+    <where>
+
+      <if test="FMATERIALNUMBER != null and FMATERIALNUMBER !='' ">
+        and FMATERIALNUMBER like concat('%',#{FMATERIALNUMBER},'%')
+      </if>
+      <if test="FMATERIALNAME != null and FMATERIALNAME !='' ">
+        and FMATERIALNAME like concat('%',#{FMATERIALNAME},'%')
+      </if>
+      <if test="FBILLNO != null and FBILLNO !='' ">
+        and FBILLNO like concat('%',#{FBILLNO},'%')
+      </if>
+    </where>
+  </select>
+</mapper>

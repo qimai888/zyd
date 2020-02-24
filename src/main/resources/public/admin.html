@@ -1,0 +1,297 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>启迈</title>
+    <link href="./layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link href="./layuiadmin/style/admin.css" rel="stylesheet" />
+     <link href="./layuiadmin/css/css.css" rel="stylesheet" />
+     <link href="./layuiadmin/css/index.css" rel="stylesheet">
+     <script src="./layuiadmin/js/index.js"></script>
+    <script src="./layuiadmin/layui/layui.js"></script>
+
+
+</head>
+<body class="layui-layout-body">
+    <div id="LAY_app">
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+                <!-- 头部区域 -->
+                <ul class="layui-nav layui-layout-left"  class="Header--nav--1FyMRKT" lay-filter="">
+                    <li class="layui-nav-item layadmin-flexible" class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                            <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                            <i class="layui-icon layui-icon-refresh-3"></i>
+                        </a>
+
+                    </li>
+                      <li class="layui-nav-item" lay-unselect>
+                       <a>
+                       	<img src="./layuiadmin/img/logo.png" width="50px"/>
+                       </a>
+
+                    </li>
+                    <li class="layui-nav-item"  >
+							<a href="admin.html?accessToken=1">
+								 <button type="button" class="layui-btn layui-btn-normal">首页</button>
+							</a>
+						</li>
+						 <li class="layui-nav-item"  >
+
+							<!-- <a class="layui-btn layui-btn-normal layui-btn-lg" href="#/">ERP评测</a>  -->
+							<a href="zhuy/index.html">
+								 <button type="button" class="layui-btn layui-btn-normal">体检工具</button>
+							</a>
+						</li>
+
+                </ul>
+                <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+
+                    <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                        <a href="javascript:;" layadmin-event="fullscreen">
+                            <i class="layui-icon layui-icon-screen-full"></i>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;">
+                            <cite><span>欢迎光临！</span>ERP医生</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a lay-href="set/user/info.html">基本资料</a></dd>
+                            <dd><a lay-href="set/user/password.html">修改密码</a></dd>
+                            <dd style="text-align: center;"><a href="./Login/Index" οnclick="javascript:location.replace(this.href); event.returnValue=false;">安全退出</a></dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                        <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                    </li>
+                    <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+                        <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 侧边菜单 -->
+            <div class="layui-side layui-side-menu">
+                <div class="layui-side-scroll">
+                    <div class="layui-logo">
+                        <span>ERP医生</span>
+                    </div>
+                    <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="违规管理" lay-direction="1" style="height: 56px;">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>违规管理</cite>
+                            </a>
+                            <dl class="layui-nav-child" style="display: none;">
+                                <dd>
+                                    <a lay-href="javascript:;" id="menuHistory">基础设置</a>
+
+                                </dd>
+
+                            </dl>
+                               <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">基础数据</a>
+                                	<dl class="layui-nav-child">
+                                		<dd>
+                                			<a lay-href="./ Databases/Database.html">基础资料</a>
+                                		</dd>
+                            		</dl>
+                                </dd>
+
+                            </dl>
+                               <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">业务流程</a>
+                                	<dl class="layui-nav-child">
+                                		<dd>
+                                			<a lay-href="./sale/Sales.html">销售管理</a>
+                                		</dd>
+      								<dd>
+      									<a lay-href="./pur/pur.html">采购管理</a>
+      								</dd>
+      								<dd>
+      									<a lay-href="./Warehouse/Warehouses.html">仓存管理</a>
+      								</dd>
+      								<dd>
+      									<a lay-href="./produce/produces.html">生产管理</a>
+      								</dd>
+      								<dd>
+      									<a lay-href="./production/productions.html">生产计划管理</a>
+      								</dd>
+      								<dd style="display: none;">
+      									<a lay-href="./financial/financials.html">财务管理</a>
+      								</dd>
+                            		</dl>
+                                </dd>
+
+                            </dl>
+
+                        </li>
+                       <li class="layui-nav-item" style="display: none;">
+                            <a href="javascript:;" lay-tips="成本违规检查" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>成本违规检查</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                        </li>
+
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="欠料表" lay-direction="2" style="height: 56px;">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>欠料表</cite>
+                            </a>
+                            <!--<dl class="layui-nav-child">
+                                <dd><a lay-href="./Material/materials.html" style="display: none;">物料追踪表</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./rack/racks.html" style="display: none;">物料齐套表</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./WuliaoZui/WuliaoZuis.html" style="display: none;">物料追踪汇总</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./male/males.html" style="display: none;">物料追踪汇总分周</a></dd>
+                            </dl>-->
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./Layout/Layouts.html" >物料分配明细</a></dd>
+                            </dl><!--
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./Delivery/Deliverys.html" style="display: none;">交期表</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./product/products.html" style="display: none;">增加到货计划</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="./quxiao/quxiaos.html" style="display: none;">取消订单</a></dd>
+                            </dl>-->
+                        </li>
+                        <li class="layui-nav-item" style="display: none;">
+                            <a href="javascript:;" lay-tips="采购交期回复" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>采购交期回复</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">。。。。。。</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item" style="display: none;">
+                            <a href="javascript:;" lay-tips="任务单日期维护" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>任务单日期维护</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item" style="display: none;">
+                            <a href="javascript:;" lay-tips="查料报表" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>查料报表</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item" style="display: none;">
+                            <a href="javascript:;" lay-tips="MPS检查报表" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>MPS检查报表</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item" style="display: none;">
+                            <a href="javascript:;" lay-tips="MRP检查报表" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>MRP检查报表</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                            <dl class="layui-nav-child">
+                                <dd><a lay-href="javascript:;">......</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item" style="display: none;">
+                            <a lay-href="javascript:;" lay-tips="健康指数查询" lay-direction="2">
+                                <i class="layui-icon layui-icon-form"></i>
+                                <cite>健康指数查询</cite>
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 页面标签 -->
+            <div class="layadmin-pagetabs" id="LAY_app_tabs">
+                <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+                <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+                <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                    <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="javascript:;"></a>
+                            <dl class="layui-nav-child layui-anim-fadein">
+                                <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                                <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                                <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <div class="layui-tab" lay-unauto lay-allowclose="true" lay-filter="layadmin-layout-tabs">
+                    <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                        <li lay-id="HomePape" lay-attr="HomePape" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <!-- 主体内容 -->
+            <div class="layui-body" id="LAY_app_body">
+                <div class="layadmin-tabsbody-item layui-show">
+                    <iframe src="./zhuy/amin.html" frameborder="0" class="layadmin-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+
+    <script>
+        layui.config({
+            base: './layuiadmin/'
+        }).extend({
+            index: 'lib/index'
+        }).use('index');
+        $("#menuHistory").click(function (argument) {
+        	layer.msg("敬请期待！");
+   {
+
+}
+
+
+})
+    </script>
+
+</body>
+</html>

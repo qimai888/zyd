@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Content-language" content="zh-CN" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="applicable-device" content="pc">
+    <meta name="viewport" content="width=device-width" />
+    <link href="../layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link href="../layuiadmin/style/admin.css" rel="stylesheet" />
+    <script src="../layuiadmin/layui/layui.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "../layuiadmin/colResizable-1.6/colresizable/colResizable-1.6.min.js" ></script>
+    <title>Receive</title>
+    <style type="text/css">
+table{
+	width:100%;
+	border-collapse: collapse;
+	table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+td{
+	border:1px solid; 
+	overflow:hidden;		/* 内容超出宽度时隐藏超出部分的内容 */ 
+	white-space:nowrap;		/* 不换行 */
+	text-overflow:ellipsis;	/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
+}
+</style>
+    
+</head>
+<body>
+    <div id="paging">
+        <div class="layui-row">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+                    <form class="layui-form" style="margin-top:15px">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width:60px;">物料代码</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FNumber" />
+                            </div>
+                            
+                            <label class="layui-form-label" style="width:60px;">物料名称</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FName" />
+                            </div>
+                            <label class="layui-form-label" style="width:60px;">规格</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FModel" />
+                            </div>
+                            <div class="layui-input-inline" style="width:150px;">                                
+                                <button type="button" class="layui-btn layui-btn-warm layui-btn-radius" id="toExcel" onclick="excel()">导出数据</button>
+                            </div>
+                            
+                            
+                            <div class="layui-input-inline" style="width:100px;float:right">
+                                <button type="button" class="layui-btn layui-btn-normal" id="btn" onclick="select()">确认查询</button>
+                            </div>
+                        </div>
+						
+                    </form>
+                    
+                </div>
+		
+            </div>
+        </div>
+		<div class="layui-row">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                	
+                    <form class="layui-form" style="margin-top:15px"  method="post" enctype="multipart/form-data" id="form">
+                    	<div class="form-group" id="thumbnailUploadContainer" class="col-sm-10" style="float: left; margin-right: 50px;">
+	              			<div class="layui-form-item">		              				
+                            		<input id="file" name="file" type="file" />
+                            		<input id="upload" name="upload" type="button" style="width: 80px;height: 35px;" value="导入Excel" />                           		
+                            </div>	
+	          					
+
+                 		</div>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+        <table class="layui-table" id="table">
+        	<colgroup>
+               <col width="100">
+               <col width="100">
+              <col>
+           </colgroup>
+			<thead>
+				<tr>
+					<th>违规类型</th>
+					<th>物料代码</th>
+					<th>物料名称</th>
+					<th>单据编号</th>
+					<th>单据日期</th>	
+					<th>审核时间</th>
+					<th>规格</th>
+					<th>单据数量</th>					
+					<th>单据状态</th>
+					<!-- <th>条件名称</th>
+					<th>部门</th> -->
+					<th>制单人</th>					
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<tr id="tr">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					
+				</tr>
+			</tbody>
+		</table>
+		<div class="page-box fr" align="center">
+			<div class="text-center" >
+			    <span id="count"></span>
+			    <button class="layui-btn layui-btn-sm" onclick="firstPage()">首页</button>
+			    <button class="layui-btn layui-btn-sm" onclick="upPage()">上一页</button>
+			    <span id="pageNum">1</span>
+			    <button class="layui-btn layui-btn-sm" onclick="nextPage()">下一页</button>
+			    <button class="layui-btn layui-btn-sm" onclick="lastPage()">尾页</button>			    
+			    <input type="text" class="skiptext" id="skiptext" style="width:35px;height:25px"/>
+			    <button class="layui-btn layui-btn-sm" onclick="skip()">跳转</button>
+			</div>
+
+		</div>
+    </div>
+
+	
+	<script>
+	
+		$(function(){
+			//此处实现表格可拖放属性
+			 $("#table").colResizable({
+			    liveDrag:true,//实现实时拖动，可看见拖动轨迹
+			    draggingClass:"dragging", //防止拖动出险虚标线
+			  });
+		});
+		//页容量
+		var pageSize = 10;
+		//当前页数
+		var pageNum = 1;
+		//数据总数
+		var total = 0;
+		//总页数
+		var pages = null;
+		//物料编码
+		var FMaterialNumber = null;  
+		//物料名称
+		var FMaterialName = null;
+		//规格
+		var FSPECIFICATION = null;
+	
+		//页面加载第一页
+		$(function() {
+			getResultList();
+		})
+	
+		//首页
+		function firstPage() {
+			pageNum = 1;
+			getResultList();
+			$("#pageNum").text("第"+pageNum+"页");
+		}
+	
+		//上一页
+		function upPage() {
+			pageNum = pageNum - 1;
+			if (pageNum < 1) {
+				pageNum = 1;
+			}
+			getResultList();
+			$("#pageNum").text("第"+pageNum+"页");
+		}
+	
+		//下一页
+		function nextPage() {
+			pageNum = pageNum + 1;
+			if (pageNum > pages) {
+				pageNum = pages;
+			}
+			getResultList();
+			$("#pageNum").text("第"+pageNum+"页");
+		}
+	
+		//尾页
+		function lastPage() {
+			pageNum = pages;
+			getResultList();
+			$("#pageNum").text("第"+pageNum+"页");
+		}
+		//跳转
+		function skip() {
+			var skiptext = $("#skiptext").val(); 
+			console.info("页码"+pageNum);
+			if (skiptext=="") { 
+	　　　　　　pageNum = 1;
+	　　　　　　
+	　　　　} else if(/(^[1-9]\d*$)/.test(skiptext)){
+				if(parseInt(skiptext)>pages){
+					pageNum = pages;
+				}else if(parseInt(skiptext)<1){
+					pageNum = 1;
+				}else{
+					pageNum = skiptext;
+				}
+	　　　　}else{
+				pageNum = 1;
+	　　　　}
+				　　　
+		
+			getResultList();
+			$("#pageNum").text("第"+pageNum+"页");
+			
+		}
+		/*筛选*/
+		function select() {
+			pageNum = 1;
+			FMaterialNumber = $("#FNumber").val();  
+			FMaterialName = $("#FName").val();
+			FSPECIFICATION = $("#FModel").val();
+			getResultList();
+			$("#pageNum").text("第"+pageNum+"页");
+		}
+		//导出数据
+		function excel(){
+			if(FMaterialNumber!=null || FMaterialName!=null || FSPECIFICATION!=null){
+				window.location.href='../sale/export?FMaterialNumber='+FMaterialNumber+'&FMaterialName='+FMaterialName+
+				'&FSPECIFICATION='+FSPECIFICATION;
+			}else{
+				window.location.href='../sale/export';
+			}
+			
+		}
+		$("#upload").click(function () {
+	           var formData = new FormData($("#form")[0]);//获取表单中的文件
+	          
+	           $.ajax({
+	               url:"../area/upload",//后台的接口地址
+	               type:"post",//post请求方式
+	               data:formData,//参数
+	               cache: false,
+	               processData: false,
+	               contentType: false,
+	               success:function (data) {
+	                   alert(data);
+	                   window.location.reload();
+	               },error:function () {
+	                   alert("操作失败~");
+	               }
+	 
+	           })
+	       });
+		//转换时间格式
+		function  toDate(str) {
+	        let times = new Date(str);
+	        let Y = times.getFullYear()
+	        let M = times.getMonth()+1<10?'0'+(times.getMonth()+1):times.getMonth()+1
+	        let D = times.getDate()<10?'0'+(times.getDate()):times.getDate()
+	        let h = times.getHours()<10?'0'+(times.getHours()):times.getHours()
+	        let m = times.getMinutes()<10?'0'+(times.getMinutes()):times.getMinutes()
+	        let s = times.getSeconds()<10?'0'+(times.getSeconds()):times.getSeconds()
+	        return times = Y + "-" + M + "-" +D+' '+h + ":" + m + ":" + s;
+	      }
+		var listbox = $("#tbody");
+		var count = $("#count");
+		var frm = listbox.children().first();
+		//展示页面
+		function getResultList() {
+			console.info("开始显示列表");			
+			$.ajax({
+	            url: '../sale/getReceivelist',
+	            type: 'post',
+	            dataType: 'json',
+	            data: {
+	            		"FMaterialName" : FMaterialName,
+	            		"FMaterialNumber" : FMaterialNumber,
+	            		"FSPECIFICATION" : FSPECIFICATION,
+	            		"pageNum" : pageNum,
+						"pageSize" : pageSize
+				},
+	            success:function(data){
+	            	console.info(data);
+	            	var list = data.list;
+	            	console.info(list);
+	            	//var listbox = $("#tbody");
+					//var frm = listbox.children().first();
+					var length = Object.keys(list).length;
+					listbox.empty();
+					count.empty();
+					total = data.total;
+					pages = data.pages;
+					pageNum= data.pageNum;
+					console.info("total:"+total+",pages:"+pages+",pageNum:"+pageNum);
+					count.text(data.total+" 条");
+					if(length>0){
+						console.info(length);	
+						$.each(list, function(i) {
+							if(list!=null){
+								var $copy;
+								$copy= frm.clone(true);
+								//var fdate = data[i].fdate.
+								$copy.find("td:eq(0)").text(list[i].illegalId);
+								$copy.find("td:eq(1)").text(list[i].fmaterialNumber);
+								$copy.find("td:eq(2)").text(list[i].fmaterialName);								
+								$copy.find("td:eq(3)").text(list[i].fbillNo);
+								$copy.find("td:eq(4)").text(toDate(list[i].fdate));
+								$copy.find("td:eq(5)").text(toDate(list[i].fdeliverydate));
+								$copy.find("td:eq(6)").text(list[i].fspecification);
+								$copy.find("td:eq(7)").text(list[i].fqty);
+								$copy.find("td:eq(8)").text(list[i].fdocumentstatus);
+								$copy.find("td:eq(9)").text(list[i].fcreatorname);
+								$("#tbody").append($copy);
+							}
+		            		
+						});
+					}
+	            	
+	            	
+	            },
+	            error:function(){
+	                alert("获取失败");
+	            }
+		
+			});
+		}
+	
+        
+    </script>
+   
+</body>
+</html>

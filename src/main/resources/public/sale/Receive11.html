@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link href="../layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link href="../layuiadmin/style/admin.css" rel="stylesheet" />
+    <script src="../layuiadmin/layui/layui.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "../layuiadmin/colResizable-1.6/colresizable/colResizable-1.6.min.js" ></script>
+    <title>Receive</title>
+    <style type="text/css">
+table{
+	width:100%;
+	border-collapse: collapse;
+	table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+td{
+	border:1px solid; 
+	overflow:hidden;		/* 内容超出宽度时隐藏超出部分的内容 */ 
+	white-space:nowrap;		/* 不换行 */
+	text-overflow:ellipsis;	/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用*/
+}
+</style>
+
+</head>
+<body>
+    <div id="paging">
+        <div class="layui-row">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+                    <form class="layui-form" style="margin-top:15px">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width:60px;">物料代码</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FNumber" />
+                            </div>
+                            <!-- @*<label class="layui-form-label" style="width:90px;">单据日期 开始</label>
+                                <div class="layui-input-inline" style="width:120px;">
+                                    <input type="text" class="layui-input" id="FSDate" placeholder="yyyy-MM-dd"/>
+                                </div>
+                                <label class="layui-form-label" style="width:30px;">结束</label>
+                                <div class="layui-input-inline" style="width:120px;">
+                                    <input type="text" class="layui-input" id="FEDate" placeholder="yyyy-MM-dd" />
+                                </div>*@ -->
+                            <label class="layui-form-label" style="width:60px;">物料名称</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FName" />
+                            </div>
+                            <label class="layui-form-label" style="width:60px;">规格</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FModel" />
+                            </div>
+                            <div class="layui-input-inline" style="width:100px;float:right">
+                                <button type="button" class="layui-btn layui-btn-normal" id="btn">确认查询</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- <table class="layui-hide" id="tableid"></table> -->
+        <table class="layui-table" id="table">
+        	<colgroup>
+               <col width="100">
+               <col width="100">
+              <col>
+           </colgroup>
+			<thead>
+				<tr>
+					<th>违规类型</th>
+					<th>物料代码</th>
+					<th>物料名称</th>
+					<th>单据编号</th>
+					<th>单据日期</th>
+					
+					
+					<th>审核时间</th>
+					<th>规格</th>
+					<th>单据数量</th>
+					
+					<th>单据状态</th>
+					<!-- <th>条件名称</th>
+					<th>部门</th> -->
+					<th>制单人</th>
+					
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<tr id="tr">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<!-- <td class="td-manage"><a title="查看"
+						onclick="x_admin_show('编辑','order-view.html')" href="javascript:;">
+							<i class="layui-icon">&#xe63c;</i>
+					</a> <a title="删除" onclick="member_del()" href="javascript:;"> <i
+							class="layui-icon">&#xe640;</i>
+					</a></td> -->
+				</tr>
+			</tbody>
+		</table>
+		
+    </div>
+
+
+	<script>
+	
+	$(function(){
+		//此处实现表格可拖放属性
+		 $("#table").colResizable({
+		    liveDrag:true,//实现实时拖动，可看见拖动轨迹
+		    draggingClass:"dragging", //防止拖动出险虚标线
+		  });
+		});
+
+    $(function  () {
+    	var listbox = $("#tbody");
+		var frm = listbox.children().first();
+		
+/* 		
+	    function formatDate(date){
+	        var result='';
+	        if(date){
+	            date=new Date(date);
+	            result=date.getFullYear()+"-"+((date.getMonth()+1)<10?"0"+(date.getMonth()+1):(date.getMonth()+1))+"-"+((date.getDate())<10?"0"+(date.getDate()):(date.getDate()));
+	        }
+	        return result;
+	    } */
+	  function  toDate(str) {
+	        let times = new Date(str);
+	        let Y = times.getFullYear()
+	        let M = times.getMonth()+1<10?'0'+(times.getMonth()+1):times.getMonth()+1
+	        let D = times.getDate()<10?'0'+(times.getDate()):times.getDate()
+	        let h = times.getHours()<10?'0'+(times.getHours()):times.getHours()
+	        let m = times.getMinutes()<10?'0'+(times.getMinutes()):times.getMinutes()
+	        let s = times.getSeconds()<10?'0'+(times.getSeconds()):times.getSeconds()
+	        return times = Y + "-" + M + "-" +D+' '+h + ":" + m + ":" + s;
+	      }
+	    
+		
+    	$.ajax({
+		            url: '../sale/getReceivelist',
+		            type: 'post',
+		            dataType: 'json',
+		            data: {},
+		            success:function(data){
+		            	console.info(data);
+		            	var length = Object.keys(data).length;
+						$(".x-right").text("共有数据："+length+" 条");
+		            	//var listbox = $("#tbody");
+						//var frm = listbox.children().first();
+						listbox.empty();
+						if(length>0){
+							console.info(length);
+							$.each(data, function(i) {
+								if(data!=null){
+									var $copy;
+									$copy= frm.clone(true);
+									//var fdate = data[i].fdate.
+									$copy.find("td:eq(0)").text(data[i].illegalId);
+									$copy.find("td:eq(1)").text(data[i].fmaterialNumber);
+									$copy.find("td:eq(2)").text(data[i].fmaterialName);
+									
+									$copy.find("td:eq(3)").text(data[i].fbillNo);
+									$copy.find("td:eq(4)").text(toDate(data[i].fdate));
+									$copy.find("td:eq(5)").text(toDate(data[i].fdeliverydate));
+									$copy.find("td:eq(6)").text(data[i].fspecification);
+									$copy.find("td:eq(7)").text(data[i].fqty);
+									$copy.find("td:eq(8)").text(data[i].fdocumentstatus);
+									$copy.find("td:eq(9)").text(data[i].fcreatorname);
+									
+									$("#tbody").append($copy);
+								}
+								
+							});
+						}
+		            	/*enterpriseId: 1
+						fbillNo: 单号
+						fcancelstatus: 禁用状态
+						fclosestatus: "B"
+						fcreatorid: "100003"
+						fcreatorname: 创建人/负责人
+						fdate: 单据日期
+						fdeliverydate:审核时间
+						fdocumentstatus: 单据状态
+						fid: 内码
+						fmaterialID: "179650"
+						fmaterialName: 物料名称
+						fmaterialNumber: 物料编码
+						fmrpclosestatus: "B"
+						fmrpfreezestatus: "A"
+						fmrpterminatestatus: "A"
+						fqty: 数量
+						fsaleorgid: "1"
+						fsaleorgname: 销售组织
+						fspecification: 规格
+						fstockoutqty: "1.0000000000"
+						getTime: null
+						id: 458752
+						illegalId: 问题id
+						userId: null*/
+		            	
+		            },
+		            error:function(){
+		                alert("获取失败");
+		            }
+		    });
+	    	$("#btn").click(function(){	
+	    		var FMaterialNumber = $("#FNumber").val();  
+	    		var FMaterialName = $("#FName").val();
+	    		var FSPECIFICATION = $("#FModel").val();
+	    		$.ajax({
+		            url: '../sale/getReceivelist',
+		            type: 'post',
+		            dataType: 'json',
+		            data: {FMaterialName:FMaterialName,FMaterialNumber:FMaterialNumber,FSPECIFICATION:FSPECIFICATION},
+		            success:function(data){
+		            	console.info(data);
+		            	var length = Object.keys(data).length;
+						$(".x-right").text("共有数据："+length+" 条");
+		            	//var listbox = $("#tbody");
+						//var frm = listbox.children().first();
+						listbox.empty();
+						if(length>0){
+							console.info(length);
+							$.each(data, function(i) {
+								if(data!=null){
+									var $copy;
+									$copy= frm.clone(true);
+									//var fdate = data[i].fdate.
+									$copy.find("td:eq(0)").text(data[i].illegalId);
+									$copy.find("td:eq(1)").text(data[i].fmaterialNumber);
+									$copy.find("td:eq(2)").text(data[i].fmaterialName);
+									
+									$copy.find("td:eq(3)").text(data[i].fbillNo);
+									$copy.find("td:eq(4)").text(data[i].fdate);
+									
+									$copy.find("td:eq(5)").text(data[i].fdeliverydate);
+									$copy.find("td:eq(6)").text(data[i].fspecification);
+									$copy.find("td:eq(7)").text(data[i].fqty);
+									$copy.find("td:eq(8)").text(data[i].fdocumentstatus);
+									$copy.find("td:eq(9)").text(data[i].fcreatorname);
+									$copy.find("td:eq(10)").text(data[i].fmaterialName);
+									$("#tbody").append($copy);
+								}
+			            		
+							});
+						}
+		            	
+		            	
+		            },
+		            error:function(){
+		                alert("获取失败");
+		            }
+		    });
+	    		
+	    	});
+    		
+    		
+    	});
+         
+    </script>
+    <!-- <script>
+        layui.config({
+            base: '../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use('index');
+    </script>
+    <script>
+
+        layui.use('table', function () {
+            var table = layui.table;
+
+            table.render({
+
+                elem: '#tableid'
+                , url: '/sale/getReceivelist'
+                , cellMinWidth: 100 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                , page: true
+                , limit: 13
+                , limits: [13, 15, 30, 50, 100]
+                , size: 'sm' //小尺寸的表格
+                , height: 'full-110' //高度最大化减去差值
+                , where: { FNumber: '', FMName: '', FModel: '' }
+                , cols: [[
+                    { field: 'FViolation', width: 100, title: '违规类型' }
+                    , { field: 'FDate', width: 100, title: '单据日期' }
+                    , { field: 'FInDate', width: 100, title: '查询日期' }
+                    , { field: 'FBillNo', width: 100, title: '单据编号' }
+                    , { field: 'FNumber', width: 100, title: '物料代码' }
+                    , { field: 'FMName', width: 100, title: '物料名称' }
+                    , { field: 'FModel', width: 100, title: '规格' }
+                    , { field: 'FQty', width: 100, title: '单据数量' }
+                    , { field: 'FUName', width: 100, title: '制单人' }
+                    , { field: 'FDName', width: 100, title: '部门' }
+                    , { field: 'FCondition', width: 100, title: '条件名称' }
+
+                ]]
+                , response: {
+                    statusName: 'status' //规定数据状态的字段名称，默认：code
+                    , dataName: 'rows' //规定数据列表的字段名称，默认：data
+                }
+            });
+            $("#btn").click(function () {
+                //alert("233");
+                var FNumber = $('#FNumber').val();
+                var FMName = $("#FMName").val();
+                var FModel = $("#FModel").val();
+                table.render({
+                    elem: '#tableid'
+                    , url: '/sale/getReceivelist'
+                    , cellMinWidth: 80//全局定义常规单元格的最小宽度，layui 2.2.1 新增
+                    , page: true
+                    , limit: 13
+                    , limits: [13, 15, 30, 50, 100]
+                    , size: 'sm' //小尺寸的表格
+                    , height: 'full-110' //高度最大化减去差值
+                    , where: { FNumber: FNumber, FMName: FMName, FModel: FModel }
+                    , cols: [[
+                        { field: 'FViolation', width: 100, title: '违规类型', sort: true }
+                        , { field: 'FDate', width: 100, title: '单据日期', sort: true }
+                        , { field: 'FInDate', width: 100, title: '查询日期', sort: true }
+                        , { field: 'FBillNo', width: 100, title: '单据编号', sort: true }
+                        , { field: 'FNumber', width: 100, title: '物料代码', sort: true }
+                        , { field: 'FMName', width: 100, title: '物料名称', sort: true }
+                        , { field: 'FModel', width: 100, title: '规格', sort: true }
+                        , { field: 'FQty', width: 100, title: '单据数量', sort: true }
+                        , { field: 'FUName', width: 100, title: '制单人', sort: true }
+                        , { field: 'FDName', width: 100, title: '部门', sort: true }
+                        , { field: 'FCondition', width: 100, title: '条件名称', sort: true }
+
+                    ]]
+                    , response: {
+                        statusName: 'status' //规定数据状态的字段名称，默认：code
+                        , dataName: 'rows' //规定数据列表的字段名称，默认：data
+                    }
+                });
+            })
+
+        });
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#FSDate'
+                , type: 'date' //默认，可不填
+            });
+            laydate.render({
+                elem: '#FEDate'
+                , type: 'date' //默认，可不填
+            });
+        });
+
+
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+		<title></title>
+
+		<link type="text/css" rel="stylesheet" href="../layuiadmin/sty/css/style.css" />
+
+		<script type="text/javascript" src="../layuiadmin/sty/js/jquery.js"></script>
+		<script type="text/javascript" src="../layuiadmin/sty/js/animate.js"></script>
+		<script src="../layuiadmin/layui/layui.js"></script>
+		<link href="../layuiadmin/layui/css/layui.css" rel="stylesheet" />
+
+
+<style type="text/css">
+	strong{
+		font-size: 16px;
+	}
+	
+</style>
+	</head>
+
+	<body>
+		<div class="top-bg" >
+			
+			<div class="num"></div>
+		<div class="num1" >
+	
+    <button type="button" class="layui-btn layui-btn-primary layui-btn-radius"> ERP医生系统信息评测，点击进行评测</button>
+   </div>
+     <script type="text/javascript">
+				var w = 1007;
+				var h = 244;
+				var canvas = document.createElement('canvas');
+				canvas.width = w;
+				canvas.height = h;
+				document.getElementsByClassName('num')[0].appendChild(canvas);
+				//document.body
+				canvas.style.backgroundColor = "rgb()";
+				var context = canvas.getContext('2d');
+				var Rot = 0;
+				var R_init = 0;
+				var timer = null;
+				var targent_R = Math.round(w / 10);
+				canvas.addEventListener('click', function(e) {
+					console.log(e);
+						 Rot = 0;
+				 R_init = 0;
+				 timer = null;
+				 Drawtext(context, 0);
+				 targent_R = Math.round(w / 10);
+					//					if(R_init === targent_R) {
+					setTimeout(function() {
+
+						clearInterval(timer);
+
+						timer = setInterval(function() {
+							Rot = Rot + 1;
+							if(Rot < 180) {
+								console.log('targent_R', targent_R)
+								Drawcilrcle(context, targent_R);
+								Drawmove(context, targent_R, Rot);
+								Drawmove_bottom(context, targent_R, Rot);
+								Drawtext(context, Rot)
+							} else if(Rot === 180) {
+								console.log("targent_R", targent_R)
+								Drawcilrcle(context, targent_R);
+								Drawfinsh(context, targent_R, 360);
+								Drawtext(context, Rot);
+
+							}
+
+						}, 10);
+					}, 50);
+					//					}
+				})
+				setInterval(function() {
+
+					R_init = R_init + 1;
+					if(R_init < targent_R + 1) {
+						Drawcilrcle(context, R_init);
+						Drawtext(context, 0);
+						if(R_init === targent_R) {
+							//							
+						}
+					}
+
+				}, 5);
+
+				function Drawcilrcle(cxt, r) {
+					cxt.clearRect(0, 0, w, h);
+					cxt.beginPath();
+					cxt.arc(w / 2, h / 2, r, 0, 2 * Math.PI);
+					cxt.fillStyle = "rgba(255,255,255,0.2)";
+					cxt.fill();
+					cxt.beginPath();
+					cxt.arc(w / 2, h / 2, r + 20, 0, 2 * Math.PI);
+					cxt.strokeStyle = "rgba(0,0,0,0.2)";
+					cxt.lineWidth = 1;
+					cxt.stroke();
+					cxt.closePath();
+				}
+
+				function Drawmove_bottom(cxt, r, rot) {
+					cxt.save();
+					cxt.beginPath();
+					cxt.translate(w / 2, h / 2); //将画布坐标系原点移至中心
+					cxt.rotate(rot / 180 * Math.PI);
+					cxt.translate(-(w / 2), -(h / 2)); //修正画布坐标系
+					cxt.arc(w / 2, h / 2, r + 20, 0, rot / 180 * Math.PI);
+//					cxt.strokeStyle = "rgba(255,255,255,0.3)";
+					cxt.lineWidth = 6;
+					cxt.stroke();
+					cxt.closePath();
+					cxt.restore();
+				}
+
+				function Drawmove(cxt, r, rot) {
+					cxt.save();
+					cxt.beginPath();
+					cxt.translate(w / 2, h / 2); //将画布坐标系原点移至中心
+					cxt.rotate(rot / 180 * Math.PI);
+					cxt.translate(-(w / 2), -(h / 2)); //修正画布坐标系
+					cxt.arc(w / 2, h / 2, r + 20, 180 / 180 * Math.PI, (rot + 180) / 180 * Math.PI);
+//					cxt.strokeStyle = "rgba(255,255,255,0.3)";
+					cxt.lineWidth = 6;
+					cxt.stroke();
+					cxt.restore();
+					cxt.closePath();
+
+				}
+
+				function Drawfinsh(cxt, r, rot) {
+					cxt.save();
+					cxt.beginPath();
+					cxt.arc(w / 2, h / 2, r + 20, 0, 2 * Math.PI);
+//					cxt.strokeStyle = "rgba(255,255,255,0.3)";
+					cxt.lineWidth = 6;
+					cxt.stroke();
+					cxt.restore();
+					cxt.closePath();
+
+				}
+
+				function Drawtext(cxt, rot) {
+					cxt.save();
+					cxt.beginPath();
+					cxt.textAlign = "center";
+					cxt.font = " 20pt  Aira";
+					cxt.fillStyle = "rgba(255,255,255,1)";
+					cxt.fillText(Math.round(rot / 180 * 78) + "分", w / 2, h / 2 + 10);
+					cxt.restore();
+					cxt.closePath();
+				
+				}
+			</script>
+			
+	
+		</div>
+
+		<!--<div><button type="button" class="layui-btn layui-btn-normal layui-btn-radius num" style="width: 250px;">全面体检</button></div>-->
+
+		</fieldset>
+		<!--</div>
+	</div>
+</div>-->
+
+		<div class="screen">
+			<div class="s2-title">
+				<img id="libdesc" src="../layuiadmin/sty/images/s2-title.png" />
+			</div>
+			<div class="screen-title-line s2-title-line"></div>
+			<div class="screen-description">
+				<p class="s2-desc">
+					我们重新思考了一种全新的体验，我们简化了大部分流程，让你一键可以检查违规
+				</p>
+				<p class="s2-desc">
+					单据是否违规，违规类型，违规数量更新情况
+				</p>
+			</div>
+			<div class="screen-line"></div>
+			<div>
+				<p><strong>安全检测</strong> - 共 <span style="color: green;">4</span> 项 （检测是否有违规）</p>
+
+			</div>
+			<div class="s2-icon">
+				<div class="list">
+					<div class="icon"><img id="screen2Image1" data-animate="0" title="" src="../layuiadmin/sty/images/system-status.png" />
+					</div>
+					<div class="lib-name">
+						销售管理
+					</div>
+					<div class="lib-desc">
+						
+					</div>
+				</div>
+				<div class="list">
+					<div class="icon"><img id="screen2Image2" title="" src="../layuiadmin/sty/images/software-status.png" />
+					</div>
+					<div class="lib-name">
+						采购管理
+					</div>
+					<div class="lib-desc">
+						
+					</div>
+				</div>
+				<div class="list">
+					<div class="icon"><img id="screen2Image3" title="" src="../layuiadmin/sty/images/safe-status.png" />
+					</div>
+					<div class="lib-name">
+						仓存管理
+					</div>
+					<div class="lib-desc">
+						
+					</div>
+				</div>
+				<div class="list">
+					<div class="icon"><img id="screen2Image4" title="" src="../layuiadmin/sty/images/anti-phishing.png" />
+					</div>
+					<div class="lib-name">
+						生产管理
+					</div>
+					<div class="lib-desc">
+						
+					</div>
+				</div>
+			</div>
+			<div class="screen-line"></div>
+			<div>
+				<p><strong>检测违规</strong> - 共 <span style="color: green;">4</span> 项 （检测是否有违规）</p>
+
+			</div>
+			<div class="s2-icon">
+				<div class="list">
+					<div class="icon"><img id="screen2Image5" data-animate="0" title="" src="../layuiadmin/sty/images/system-status.png" />
+					</div>
+					<div class="lib-name">
+						销售管理
+					</div>
+					<div class="lib-desc">
+						销售订单-接单2天未审核
+					</div>
+				</div>
+				<div class="list">
+					<div class="icon"><img id="screen2Image6" title="" src="../layuiadmin/sty/images/software-status.png" />
+					</div>
+					<div class="lib-name">
+						采购管理
+					</div>
+					<div class="lib-desc">
+						采购订单-交货日期超7天未关闭
+					</div>
+				</div>
+				<div class="list">
+					<div class="icon"><img id="screen2Image7" title="" src="../layuiadmin/sty/images/safe-status.png" />
+					</div>
+					<div class="lib-name">
+						采购管理
+					</div>
+					<div class="lib-desc">
+						生产用料清单变更单-拖期未变更
+					</div>
+				</div>
+				<div class="list">
+					<div class="icon"><img id="screen2Image8" title="" src="../layuiadmin/sty/images/anti-phishing.png" />
+					</div>
+					<div class="lib-name">
+						仓存管理
+					</div>
+					<div class="lib-desc">
+						受托加工材料收料单-拖期未审核
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

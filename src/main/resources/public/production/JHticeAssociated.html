@@ -1,0 +1,178 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link href="../layuiadmin/layui/css/layui.css" rel="stylesheet"  />
+   <!--  <link href="../layuiadmin/style/admin.css" rel="stylesheet" /> -->
+    
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+        <script src="../layuiadmin/layui/layui.js"></script>
+    <title>Receive</title>
+</head>
+<body>
+    <div id="paging">
+        <div class="layui-row">
+            <div class="layui-card">
+
+                <div class="layui-card-body">
+                    <form class="layui-form"  style="margin-top:15px">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width:60px;">物料代码</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FNumber" />
+                            </div>
+                           
+                            <label class="layui-form-label" style="width:60px;">物料名称</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FMName" />
+                            </div>
+                            <label class="layui-form-label" style="width:60px;">规格</label>
+                            <div class="layui-input-inline" style="width:150px;">
+                                <input type="text" class="layui-input" id="FModel" />
+                            </div>
+                            <div class="layui-input-inline" style="width:100px;float:right">
+                                <button type="button" lay-submit="" class="layui-btn layui-btn-warm" id="exportExcel" name="exportExcel" onclick="excel()">
+        							<i class="layui-icon"></i>导出</button>
+									
+                            </div> 
+                             <div class="layui-input-inline" style="width:100px;float:right ;display:none;">
+                                <button type="button" lay-submit="" class="layui-btn layui-btn-warm" id="exportExcel1" name="exportExcel" onclick="exportexcel()">
+        							<i class="layui-icon"></i>导入</button>
+									
+                            </div> 
+                             <!--  <div class="layui-input-inline" style="width:150px;">                                
+                                <button type="button" class="layui-btn layui-btn-warm layui-btn-radius" id="toExcel" onclick="excel()">导出数据</button>
+                            </div> -->
+                            <div class="layui-input-inline" style="width:100px;float:right">
+                                <button type="button" class="layui-btn layui-btn-normal" id="btn" >确认查询</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+             <table class="layui-hide" id="test"></table>
+        </div>
+
+    </div>
+    </div>
+     
+    
+
+<script>
+var FNumber = null ;
+var FMName =null ;
+var FModel = null ;
+function excel(){
+	 
+	if(FNumber!=null || FMName!=null || FModel!=null){
+		window.location.href='http://localhost:8089/demo/sale/export?FMaterialNumber='
+				+FNumber+'&FMaterialName='+FMName+
+		'&FSPECIFICATION='+FModel;
+	}else{
+		window.location.href='http://localhost:8089/demo/sale/export';
+	}
+	
+} 
+$("#upload").click(function () {
+    var formData = new FormData($("#form")[0]);//获取表单中的文件
+   
+    $.ajax({
+        url:"../area/upload",//后台的接口地址
+        type:"post",//post请求方式
+        data:formData,//参数
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function (data) {
+            alert(data);
+            window.location.reload();
+        },error:function () {
+            alert("操作失败~");
+        }
+
+    })
+});
+ 
+ 
+	 
+
+ layui.use('table',function(){
+  var table = layui.table;
+
+  table.render({
+    elem: '#test'
+    ,url:'../sale/getReceivelistLayui'
+    , cellMinWidth: 100
+   
+	,totalRow: true
+    , page: true
+    , limit: 30
+    , limits: [10, 20, 30, 40, 50,60,70,80,90]
+    , size: 'sm' //小尺寸的表格
+    , height: 'full-110' //高度最大化减去差值
+
+    , where: { IllegalId: '3'} 
+
+    ,cols: [[
+      {field:'illegalId', width:100, title: '违规类型', sort: true}
+      ,{field:'fbillNo', width:100, title: '单据编号'}
+      ,{field:'fmaterialNumber', width:100, title: '物料代码'}
+      ,{field:'fmaterialName', minWidth:80, title: '物料名称', sort: true}
+      
+      ,{field:'fdate', title: '单据日期', width: 100}
+      ,{field:'fdeliverydate', width:100, title: '审核时间', sort: true}
+      ,{field:'fspecification', width:100, title: '规格', sort: true}
+      ,{field:'fqty', width:100, title: '单据数量'}
+      ,{field:'fmrpfreezestatus', width:100, title: '单据状态', sort: true}
+      ,{field:'fcreatorname', width:135, title: '制单人', sort: true}
+    ]]
+     , id: 'testReload' 
+  
+
+      ,parseData: function(res){ 
+       
+       
+
+        return {
+        "count": res.count,
+          "code": 0, //解析接口状态
+          "data": res.data
+        };  
+        
+      },
+      response:{
+        statusName: 'code' ,// 对应 code
+        msgName: 'msg'  , // 对应 msg
+        countName: 'count', //
+        dataName: 'data'
+      }  
+  });
+ 
+		  $('#btn').on('click', function(){
+			  FNumber = $('#FNumber').val();
+		      FMName = $("#FMName").val();
+		      FModel = $("#FModel").val();
+			  //执行重载
+		      table.reload('testReload', {
+		        page: {
+		          curr: 1 //重新从第 1 页开始
+		        }
+		        ,where: {
+		        	FMaterialNumber:FNumber,
+		        	FMaterialName:FMName,
+		        	FSPECIFICATION:FModel,
+		        	
+		        }
+		      }, 'data');
+		  });
+		});
+ 
+ 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link href="../layuiadmin/layui/css/layui.css" rel="stylesheet" />
+    <link href="../layuiadmin/style/admin.css" rel="stylesheet" />
+    <script src="../layuiadmin/layui/layui.js"></script>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <title>DeliveryDate</title>
+</head>
+<body>
+    <div id="paging">
+        <div class="layui-row">
+            <div class="layui-card">
+                
+                <div class="layui-card-body">
+                    <form class="layui-form" style="margin-top:15px">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="width:60px;">物料代码</label>
+                            <div class="layui-input-inline"style="width:150px;">
+                                <input type="text" class="layui-input" id="FNumber" />
+                            </div>
+                            <label class="layui-form-label" style="width:60px;">物料名称</label>
+                            <div class="layui-input-inline"style="width:150px;">
+                                <input type="text" class="layui-input" id="FMName" />
+                            </div>
+                            <label class="layui-form-label" style="width:60px;">规格</label>
+                            <div class="layui-input-inline"style="width:150px;">
+                                <input type="text" class="layui-input" id="FModel" />
+                            </div>
+                            <div class="layui-input-inline" style="width:100px;float:right">
+                                <button type="button" class="layui-btn layui-btn-normal" id="btn">确认查询</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <table class="layui-hide" id="tableid"></table>
+    </div>
+
+    <table id="demo" lay-filter="test"></table>
+ 
+<script src="/layui/layui.js"></script>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 312
+    ,url: '/demo/table/user/' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+      ,{field: 'username', title: '用户名', width:80}
+      ,{field: 'sex', title: '性别', width:80, sort: true}
+      ,{field: 'city', title: '城市', width:80} 
+      ,{field: 'sign', title: '签名', width: 177}
+      ,{field: 'experience', title: '积分', width: 80, sort: true}
+      ,{field: 'score', title: '评分', width: 80, sort: true}
+      ,{field: 'classify', title: '职业', width: 80}
+      ,{field: 'wealth', title: '财富', width: 135, sort: true}
+    ]]
+  });
+  
+});
+</script>
+</body>
+</html>

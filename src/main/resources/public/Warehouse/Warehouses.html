@@ -1,0 +1,1596 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width"/>
+    <link href="../layuiadmin/layui/css/layui.css" rel="stylesheet"/>
+    <link href="../layuiadmin/style/admin.css" rel="stylesheet"/>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../layuiadmin/layui/layui.js"></script>
+    <script src="../layuiadmin/lib/extend/echarts.js"></script>
+
+    <title>Sales</title>
+</head>
+<body>
+<div>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header">待办事项</div>
+                            <div class="layui-card-body">
+
+                                <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
+                                     lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;"
+                                     id="change">
+                                    <div carousel-item="">
+                                        <ul class="layui-row layui-col-space10 layui-this">
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCReceive.html" class="layadmin-backlog-body">
+                                                    <h3>其他入库单-拖期未审核&emsp;&emsp;&emsp;&emsp;</h3>
+                                                    <p><cite >292</cite></p>
+                                                </a>
+                                            </li>
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCZeroPrice.html" class="layadmin-backlog-body">
+                                                    <h3>直接调拨单-拖期未审核</h3>
+                                                    <p><cite>249</cite></p>
+                                                </a>
+                                            </li>
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCSalesDelivery.html" class="layadmin-backlog-body">
+                                                    <h3>受托加工材料收料单-拖期未审核</h3>
+                                                    <p><cite>108</cite></p>
+                                                </a>
+                                            </li>
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCNoticeDelayed.html" class="layadmin-backlog-body">
+                                                    <h3>受托加工材料入库单-拖期未审核</h3>
+                                                    <p><cite>207</cite></p>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <ul class="layui-row layui-col-space10">
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCDeliveryDate.html" class="layadmin-backlog-body">
+                                                    <h3>受托加工材料退料单-拖期未审核</h3>
+                                                    <p><cite>211</cite></p>
+                                                </a>
+                                            </li>
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCNoticeAssociated.html"
+                                                   class="layadmin-backlog-body">
+                                                    <h3>组装拆卸单-拖期未审核</h3>
+                                                    <p><cite>190</cite></p>
+                                                </a>
+                                            </li>
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCStockDelayed.html" class="layadmin-backlog-body">
+                                                    <h3>其他出库单-拖期未审核</h3>
+                                                    <p><cite>152</cite></p>
+                                                </a>
+                                            </li>
+                                            <li class="layui-col-xs6">
+                                                <a lay-href="./Warehouse/CCStockAssociated.html"
+                                                   class="layadmin-backlog-body">
+                                                    <h3>盘亏单-拖期未审核</h3>
+                                                    <p><cite>131</cite></p>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="layui-carousel-ind">
+                                        <ul>
+                                            <li class="layui-this"></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="layui-icon layui-carousel-arrow" lay-type="sub"></button>
+                                    <button class="layui-icon layui-carousel-arrow" lay-type="add"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    	<div class="layui-col-md12">
+							<div class="layui-card" style="height: 520px;">
+								<div class="layui-card-header">数据概览</div>
+								<div class="layui-card-body">
+
+									<div class="layui-carousel layadmin-carousel layadmin-dataview"
+										data-anim="fade" lay-filter="LAY-index-dataview"
+										lay-anim="fade" lay-indicator="inside" lay-arrow="none"
+										style="width: 100%; height: 500px;" id="changeEC">
+										<div carousel-item="" id="LAY-index-dataview"
+											style="height: 500px">
+											<!-- carousel-item="" -->
+
+											
+											<div id="main" style="width: 100%; height: 450px;"></div>
+
+
+											<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM  --> 
+											<div id="main1" style="width: 100%; height: 450px;"></div>
+											 <div id="main2" style="width: 100%;height:450px;"></div>
+                                                <div id="main3" style="width: 100%;height:450px;"></div>
+                                                <div id="main4" style="width: 100%;height:450px;"></div>
+                                                <div id="main5" style="width: 100%;height:450px;"></div>
+                                                <div id="main6" style="width: 100%;height:450px;"></div>
+                                                <div id="main7" style="width: 100%;height:450px;"></div>
+
+
+
+
+										</div>
+										<div class="layui-carousel-ind">
+											<ul>
+												<li class="layui-this"></li>
+												<li></li>
+												<li></li>
+											</ul>
+										</div>
+										<button class="layui-icon layui-carousel-arrow" lay-type="sub"></button>
+										<button class="layui-icon layui-carousel-arrow" lay-type="add"></button>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+                </div>
+            </div>
+
+            <div class="layui-col-md4">
+
+                <div class="layui-card">
+                    <div class="layui-card-header">违规占比</div>
+                    <div class="layui-card-body">
+                        <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
+                             lay-indicator="inside"
+                             lay-arrow="none" style="width: 100%; " id="changeleft1">
+                            <div carousel-item="">
+                                <div>
+                                <div class="layui-card-body" style="height:5px;">其他入库单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            <div>
+                               <div class="layui-card-body" style="height:5px;">直接调拨单-拖期未审核</div>
+                                  <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 24% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                  <div class="layui-card-body" style="height:5px;">受托加工材料收料单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                  <div class="layui-card-body" style="height:5px;">受托加工材料入库单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                  <div class="layui-card-body" style="height:5px;">>受托加工材料退料单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">45%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+
+  							     <div class="layui-card-body" style="height:5px;">组装拆卸单-拖期未审核</div>
+                             <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                  <div class="layui-card-body" style="height:5px;">其他出库单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                  <div class="layui-card-body" style="height:5px;">盘亏单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（月同比 12% <span class="layui-edge layui-edge-top" lay-tips="增长"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span
+                                                    class="layui-progress-text">65%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3>（周同比 11% <span class="layui-edge layui-edge-bottom" lay-tips="下降"
+                                                                  lay-offset="-15"></span>）</h3>
+                                            <div class="layui-progress-bar" lay-percent="32%" style="width: 32%;"><span
+                                                    class="layui-progress-text">32%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">违规占比</div>
+                    <div class="layui-card-body">
+                        <div class="layui-carousel layadmin-carousel layadmin-backlog" lay-anim=""
+                             lay-indicator="inside"
+                             lay-arrow="none" style="width: 100%; " id="changeleft2">
+                            <div carousel-item="">
+                                <div>
+                                 <div class="layui-card-body" style="height:5px;">其他入库单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">28%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                 <div class="layui-card-body" style="height:5px;">直接调拨单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">58%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                  <div class="layui-card-body" style="height:5px;">受托加工材料收料单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">38%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                 <div class="layui-card-body" style="height:5px;">受托加工材料入库单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">12%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                 <div class="layui-card-body" style="height:5px;">受托加工材料退料单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">23%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                 <div class="layui-card-body" style="height:5px;">组装拆卸单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">58%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                 <div class="layui-card-body" style="height:5px;">其他出库单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">58%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div>
+                                 <div class="layui-card-body" style="height:5px;">盘亏单-拖期未审核</div>
+                                    <div class="layui-card-body layadmin-takerates">
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar" lay-percent="58%" style="width: 58%;"><span
+                                                    class="layui-progress-text">58%</span></div>
+                                        </div>
+                                        <div class="layui-progress" lay-showpercent="yes">
+                                            <h3></h3>
+                                            <div class="layui-progress-bar layui-bg-red" lay-percent="90%"
+                                                 style="width: 90%;"><span class="layui-progress-text">90%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.ajax({
+            url: '../sale/countOrder',
+            type: 'post',
+            dataType: 'json',
+            data: {
+
+                "illegalId": "1"
+            },
+            success: function (data) {
+                $("#aa").text(data);
+
+
+            },
+            error: function () {
+                alert("获取失败");
+            }
+
+        });
+    })
+</script>
+<script>
+    $(function () {
+        $.ajax({
+            url: '../sale/countOrder',
+            type: 'post',
+            dataType: 'json',
+            data: {
+
+                "illegalId": "1"
+            },
+            success: function (data) {
+                $("#a1").text(data);
+
+
+            },
+            error: function () {
+                alert("获取失败");
+            }
+
+        });
+    })
+</script>
+<script>
+
+    layui.config({
+        base: '../layuiadmin/'
+    }).extend({
+        index: 'lib/index'
+    }).use('index');
+</script>
+<script>
+    layui.use('carousel', function () {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#change'
+            , width: '100%' //设置容器宽度
+            , arrow: 'none' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+            , interval: 5000 //切换时间ms
+
+        });
+        carousel.render({
+            elem: '#changeEC'
+            , width: '100%' //设置容器宽度
+            , arrow: 'none' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+            , interval: 5000 //切换时间ms
+
+        });
+        carousel.render({
+            elem: '#changeleft1'
+            , width: '100%' //设置容器宽度
+            , arrow: 'none' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+            , interval: 5000 //切换时间ms
+
+        });
+        carousel.render({
+            elem: '#changeleft2'
+            , width: '100%' //设置容器宽度
+            , arrow: 'none' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+            , interval: 5000 //切换时间ms
+
+        });
+    });
+
+
+</script>
+<script type="text/javascript">
+    var obj1 = [];
+    $.ajax({
+
+        type: "POST",
+        contentType: false,
+        processData: false,
+        url: 'http://127.0.0.1:8/sale/getReceivelist',
+
+        success: function (data) {
+            console.log(data[0].FSALEORGName)
+            for (var i = 0; i < data.length; i++) {
+                obj1.push(data[i].FSALEORGName)
+            }
+            console.log(obj1)
+        }
+    })
+   
+    
+    $("#main").width()
+    document.getElementById('main').style.width = $("#main").width()+'px';
+    document.getElementById('main1').style.width = $("#main").width()+'px';
+    document.getElementById('main2').style.width = $("#main").width()+'px';
+    document.getElementById('main3').style.width = $("#main").width()+'px';
+    document.getElementById('main4').style.width = $("#main").width()+'px';
+    document.getElementById('main5').style.width = $("#main").width()+'px';
+    document.getElementById('main6').style.width = $("#main").width()+'px';
+    document.getElementById('main7').style.width = $("#main").width()+'px';
+ // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+    $('.chart').resize(function(){
+    	myChart.resize();
+	});
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+     
+    
+       /*   // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+     // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main1'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  [ '月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  [ '月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['直接访问', '搜索引擎'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  [ '月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                /* {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                /* {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main3'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main4'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  [ '月趋势', '周趋势']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main5'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main6'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+               /*  {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main7'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '违规数量趋势'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:  ['月趋势', '周趋势'] 
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                /* {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                }, */
+                {
+                    name: '月趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '周趋势',
+                    type: 'line',
+                    stack: '总量',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+      /*    // 异步加载数据
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                   data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });  */
+
+        // 使用刚指定的配置项和数据显示图表。
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qm.dao.CloudMaterialDao">
+  <resultMap id="BaseResultMap" type="com.qm.entity.CloudMaterial">
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="FMATERIALID" jdbcType="VARCHAR" property="FMATERIALID" />
+    <result column="FMATERIALName" jdbcType="VARCHAR" property="FMATERIALName" />
+    <result column="FMATERIALNumber" jdbcType="VARCHAR" property="FMATERIALNumber" />
+    <result column="FMATERIALGROUP" jdbcType="VARCHAR" property="FMATERIALGROUP" />
+    <result column="FMATERIALGROUPName" jdbcType="VARCHAR" property="FMATERIALGROUPName" />
+    <result column="FCREATEORGID" jdbcType="VARCHAR" property="FCREATEORGID" />
+    <result column="FCREATEORGName" jdbcType="VARCHAR" property="FCREATEORGName" />
+    <result column="FUSEORGID" jdbcType="VARCHAR" property="FUSEORGID" />
+    <result column="FUSEORGName" jdbcType="VARCHAR" property="FUSEORGName" />
+    <result column="FCREATORID" jdbcType="VARCHAR" property="FCREATORID" />
+    <result column="FCREATORName" jdbcType="VARCHAR" property="FCREATORName" />
+    <result column="FCREATEDATE" jdbcType="TIMESTAMP" property="FCREATEDATE" />
+    <result column="FDOCUMENTSTATUS" jdbcType="VARCHAR" property="FDOCUMENTSTATUS" />
+    <result column="FFORBIDSTATUS" jdbcType="VARCHAR" property="FFORBIDSTATUS" />
+    <result column="FAPPROVERID" jdbcType="VARCHAR" property="FAPPROVERID" />
+    <result column="FAPPROVERName" jdbcType="VARCHAR" property="FAPPROVERName" />
+    <result column="FAPPROVEDATE" jdbcType="TIMESTAMP" property="FAPPROVEDATE" />
+    <result column="FSPECIFICATION" jdbcType="VARCHAR" property="FSPECIFICATION" />
+    <result column="FBASEUNITID" jdbcType="VARCHAR" property="FBASEUNITID" />
+    <result column="FBASEUNITName" jdbcType="VARCHAR" property="FBASEUNITName" />
+    <result column="FErpClsID" jdbcType="VARCHAR" property="FErpClsID" />
+    <result column="FErpClsName" jdbcType="VARCHAR" property="FErpClsName" />
+    <result column="FCategoryID" jdbcType="VARCHAR" property="FCategoryID" />
+    <result column="FCategoryName" jdbcType="VARCHAR" property="FCategoryName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, userId, FMATERIALID, FMATERIALName, FMATERIALNumber, FMATERIALGROUP, FMATERIALGROUPName, 
+    FCREATEORGID, FCREATEORGName, FUSEORGID, FUSEORGName, FCREATORID, FCREATORName, FCREATEDATE, 
+    FDOCUMENTSTATUS, FFORBIDSTATUS, FAPPROVERID, FAPPROVERName, FAPPROVEDATE, FSPECIFICATION, 
+    FBASEUNITID, FBASEUNITName, FErpClsID, FErpClsName, FCategoryID, FCategoryName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cloudmaterial
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cloudmaterial
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qm.entity.CloudMaterial">
+    insert into cloudmaterial (Id, userId, FMATERIALID, 
+      FMATERIALName, FMATERIALNumber, FMATERIALGROUP, 
+      FMATERIALGROUPName, FCREATEORGID, FCREATEORGName, 
+      FUSEORGID, FUSEORGName, FCREATORID, 
+      FCREATORName, FCREATEDATE, FDOCUMENTSTATUS, 
+      FFORBIDSTATUS, FAPPROVERID, FAPPROVERName, 
+      FAPPROVEDATE, FSPECIFICATION, FBASEUNITID, 
+      FBASEUNITName, FErpClsID, FErpClsName, 
+      FCategoryID, FCategoryName)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{FMATERIALID,jdbcType=VARCHAR}, 
+      #{FMATERIALName,jdbcType=VARCHAR}, #{FMATERIALNumber,jdbcType=VARCHAR}, #{FMATERIALGROUP,jdbcType=VARCHAR}, 
+      #{FMATERIALGROUPName,jdbcType=VARCHAR}, #{FCREATEORGID,jdbcType=VARCHAR}, #{FCREATEORGName,jdbcType=VARCHAR}, 
+      #{FUSEORGID,jdbcType=VARCHAR}, #{FUSEORGName,jdbcType=VARCHAR}, #{FCREATORID,jdbcType=VARCHAR}, 
+      #{FCREATORName,jdbcType=VARCHAR}, #{FCREATEDATE,jdbcType=TIMESTAMP}, #{FDOCUMENTSTATUS,jdbcType=VARCHAR}, 
+      #{FFORBIDSTATUS,jdbcType=VARCHAR}, #{FAPPROVERID,jdbcType=VARCHAR}, #{FAPPROVERName,jdbcType=VARCHAR}, 
+      #{FAPPROVEDATE,jdbcType=TIMESTAMP}, #{FSPECIFICATION,jdbcType=VARCHAR}, #{FBASEUNITID,jdbcType=VARCHAR}, 
+      #{FBASEUNITName,jdbcType=VARCHAR}, #{FErpClsID,jdbcType=VARCHAR}, #{FErpClsName,jdbcType=VARCHAR}, 
+      #{FCategoryID,jdbcType=VARCHAR}, #{FCategoryName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qm.entity.CloudMaterial">
+    insert into cloudmaterial
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="FMATERIALID != null">
+        FMATERIALID,
+      </if>
+      <if test="FMATERIALName != null">
+        FMATERIALName,
+      </if>
+      <if test="FMATERIALNumber != null">
+        FMATERIALNumber,
+      </if>
+      <if test="FMATERIALGROUP != null">
+        FMATERIALGROUP,
+      </if>
+      <if test="FMATERIALGROUPName != null">
+        FMATERIALGROUPName,
+      </if>
+      <if test="FCREATEORGID != null">
+        FCREATEORGID,
+      </if>
+      <if test="FCREATEORGName != null">
+        FCREATEORGName,
+      </if>
+      <if test="FUSEORGID != null">
+        FUSEORGID,
+      </if>
+      <if test="FUSEORGName != null">
+        FUSEORGName,
+      </if>
+      <if test="FCREATORID != null">
+        FCREATORID,
+      </if>
+      <if test="FCREATORName != null">
+        FCREATORName,
+      </if>
+      <if test="FCREATEDATE != null">
+        FCREATEDATE,
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        FDOCUMENTSTATUS,
+      </if>
+      <if test="FFORBIDSTATUS != null">
+        FFORBIDSTATUS,
+      </if>
+      <if test="FAPPROVERID != null">
+        FAPPROVERID,
+      </if>
+      <if test="FAPPROVERName != null">
+        FAPPROVERName,
+      </if>
+      <if test="FAPPROVEDATE != null">
+        FAPPROVEDATE,
+      </if>
+      <if test="FSPECIFICATION != null">
+        FSPECIFICATION,
+      </if>
+      <if test="FBASEUNITID != null">
+        FBASEUNITID,
+      </if>
+      <if test="FBASEUNITName != null">
+        FBASEUNITName,
+      </if>
+      <if test="FErpClsID != null">
+        FErpClsID,
+      </if>
+      <if test="FErpClsName != null">
+        FErpClsName,
+      </if>
+      <if test="FCategoryID != null">
+        FCategoryID,
+      </if>
+      <if test="FCategoryName != null">
+        FCategoryName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALID != null">
+        #{FMATERIALID,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALName != null">
+        #{FMATERIALName,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALNumber != null">
+        #{FMATERIALNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALGROUP != null">
+        #{FMATERIALGROUP,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALGROUPName != null">
+        #{FMATERIALGROUPName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEORGID != null">
+        #{FCREATEORGID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEORGName != null">
+        #{FCREATEORGName,jdbcType=VARCHAR},
+      </if>
+      <if test="FUSEORGID != null">
+        #{FUSEORGID,jdbcType=VARCHAR},
+      </if>
+      <if test="FUSEORGName != null">
+        #{FUSEORGName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORID != null">
+        #{FCREATORID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORName != null">
+        #{FCREATORName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEDATE != null">
+        #{FCREATEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FFORBIDSTATUS != null">
+        #{FFORBIDSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPROVERID != null">
+        #{FAPPROVERID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPROVERName != null">
+        #{FAPPROVERName,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPROVEDATE != null">
+        #{FAPPROVEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FSPECIFICATION != null">
+        #{FSPECIFICATION,jdbcType=VARCHAR},
+      </if>
+      <if test="FBASEUNITID != null">
+        #{FBASEUNITID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBASEUNITName != null">
+        #{FBASEUNITName,jdbcType=VARCHAR},
+      </if>
+      <if test="FErpClsID != null">
+        #{FErpClsID,jdbcType=VARCHAR},
+      </if>
+      <if test="FErpClsName != null">
+        #{FErpClsName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCategoryID != null">
+        #{FCategoryID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCategoryName != null">
+        #{FCategoryName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qm.entity.CloudMaterial">
+    update cloudmaterial
+    <set>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALID != null">
+        FMATERIALID = #{FMATERIALID,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALName != null">
+        FMATERIALName = #{FMATERIALName,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALNumber != null">
+        FMATERIALNumber = #{FMATERIALNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALGROUP != null">
+        FMATERIALGROUP = #{FMATERIALGROUP,jdbcType=VARCHAR},
+      </if>
+      <if test="FMATERIALGROUPName != null">
+        FMATERIALGROUPName = #{FMATERIALGROUPName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEORGID != null">
+        FCREATEORGID = #{FCREATEORGID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEORGName != null">
+        FCREATEORGName = #{FCREATEORGName,jdbcType=VARCHAR},
+      </if>
+      <if test="FUSEORGID != null">
+        FUSEORGID = #{FUSEORGID,jdbcType=VARCHAR},
+      </if>
+      <if test="FUSEORGName != null">
+        FUSEORGName = #{FUSEORGName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORID != null">
+        FCREATORID = #{FCREATORID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORName != null">
+        FCREATORName = #{FCREATORName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATEDATE != null">
+        FCREATEDATE = #{FCREATEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        FDOCUMENTSTATUS = #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FFORBIDSTATUS != null">
+        FFORBIDSTATUS = #{FFORBIDSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPROVERID != null">
+        FAPPROVERID = #{FAPPROVERID,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPROVERName != null">
+        FAPPROVERName = #{FAPPROVERName,jdbcType=VARCHAR},
+      </if>
+      <if test="FAPPROVEDATE != null">
+        FAPPROVEDATE = #{FAPPROVEDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FSPECIFICATION != null">
+        FSPECIFICATION = #{FSPECIFICATION,jdbcType=VARCHAR},
+      </if>
+      <if test="FBASEUNITID != null">
+        FBASEUNITID = #{FBASEUNITID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBASEUNITName != null">
+        FBASEUNITName = #{FBASEUNITName,jdbcType=VARCHAR},
+      </if>
+      <if test="FErpClsID != null">
+        FErpClsID = #{FErpClsID,jdbcType=VARCHAR},
+      </if>
+      <if test="FErpClsName != null">
+        FErpClsName = #{FErpClsName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCategoryID != null">
+        FCategoryID = #{FCategoryID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCategoryName != null">
+        FCategoryName = #{FCategoryName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qm.entity.CloudMaterial">
+    update cloudmaterial
+    set userId = #{userId,jdbcType=VARCHAR},
+      FMATERIALID = #{FMATERIALID,jdbcType=VARCHAR},
+      FMATERIALName = #{FMATERIALName,jdbcType=VARCHAR},
+      FMATERIALNumber = #{FMATERIALNumber,jdbcType=VARCHAR},
+      FMATERIALGROUP = #{FMATERIALGROUP,jdbcType=VARCHAR},
+      FMATERIALGROUPName = #{FMATERIALGROUPName,jdbcType=VARCHAR},
+      FCREATEORGID = #{FCREATEORGID,jdbcType=VARCHAR},
+      FCREATEORGName = #{FCREATEORGName,jdbcType=VARCHAR},
+      FUSEORGID = #{FUSEORGID,jdbcType=VARCHAR},
+      FUSEORGName = #{FUSEORGName,jdbcType=VARCHAR},
+      FCREATORID = #{FCREATORID,jdbcType=VARCHAR},
+      FCREATORName = #{FCREATORName,jdbcType=VARCHAR},
+      FCREATEDATE = #{FCREATEDATE,jdbcType=TIMESTAMP},
+      FDOCUMENTSTATUS = #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      FFORBIDSTATUS = #{FFORBIDSTATUS,jdbcType=VARCHAR},
+      FAPPROVERID = #{FAPPROVERID,jdbcType=VARCHAR},
+      FAPPROVERName = #{FAPPROVERName,jdbcType=VARCHAR},
+      FAPPROVEDATE = #{FAPPROVEDATE,jdbcType=TIMESTAMP},
+      FSPECIFICATION = #{FSPECIFICATION,jdbcType=VARCHAR},
+      FBASEUNITID = #{FBASEUNITID,jdbcType=VARCHAR},
+      FBASEUNITName = #{FBASEUNITName,jdbcType=VARCHAR},
+      FErpClsID = #{FErpClsID,jdbcType=VARCHAR},
+      FErpClsName = #{FErpClsName,jdbcType=VARCHAR},
+      FCategoryID = #{FCategoryID,jdbcType=VARCHAR},
+      FCategoryName = #{FCategoryName,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		  <link href="../layuiadmin/css/index.css" rel="stylesheet">
+		   <script src="../layuiadmin/layui/layui.js"></script>
+		   <link href="../layuiadmin/layui/css/layui.css" rel="stylesheet" />
+		    <script src="../layuiadmin/js/index.js"></script>
+		<title></title>
+
+	
+		<style>
+			link {
+        display: none;
+}
+  html{
+  	line-height: 1.1/*5;*/
+  font-size: 700%;
+  box-sizing: border-box;
+  } 	
+ .one{
+           height: 400px;
+            width: 1040px;
+            font-size: 16px;
+            line-height: 30px;
+            font-family:"Arial","微软雅黑";
+            text-indent: 4em;
+        }
+		
+		/* *{
+            margin: 0;
+            padding: 0;
+        }
+		img{ display:block;margin-left:auto;margin-right:auto; }
+		 */
+		</style>
+		<script type="text/javascript" src="../layuiadmin/js/jquery-1.12.4.js"></script>
+	</head>
+	<body>
+
+		<div id="ice-container">
+			
+					<div class="Banner--container--1SVqnlJ">
+						<div class="Banner--content--t4f_XDt">
+							<div class="Banner--title--UzODtiw">金蝶客户成功保障平台--违规业务检查
+							</div>
+							<div class="Banner--desc--1j1pdfR">客户效益分析-提升效率
+							</div>
+						<!-- 	<a class="Banner--link--104Qp_b">开始使用</a> -->
+						</div>
+					</div>
+					<div class="Introduction--container--C8fs_fr"><h3 class="Introduction--title--1d1j37u">产品简介</h3>
+						<p class="one">
+							        大数据时代和云计算时代的到来，“云制造”成为制造业未来发展的趋势。ERP成为企业向互联网转型的
+							重要平台。然而根据前期交流与调研，我们了解到有些制造企业的管理系统应用仍存在着不足，购买的ERP
+							软件并未全部正常运行没有完整的企业内部管理数据,ERP软件尚未成为管理人员日常工作的得力工具，管理
+							数据还是依靠手工处理业务数据，而手工管理弊端颇多，如信息不共享、库存呆滞多、员工作息长、物料不
+							畅通等;解决问题效率低，未达到ERP应有的效益。启迈平台应运而生。<br />
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启迈平台以规范管控为核心，以交付产品为管理主线，全面建立支撑业务管理与长期发展的管理信息系统
+                                                                          作为服务的主导思想；快速、实时、集成地反映人、财、物及其相关信息的变化，充分实现物流、资金流、
+                                                                          信息流三流合一，从而提高企业整体管理水平；为企业领导决策提供更为可靠的、及时的、准确的、全面的
+                                                                          信息支持，提高企业战略决策和市场经营运作决策的水平，从而提升客户的核心竞争力，支持客户的良性可持续发展。<br />
+                             	（1）利用系统化、流程化思路完善运营与管理平台。<br />
+                                 	（2）优化资源配置与业务流程，确保快速反应能力。<br />
+                                      	（3）利用信息化工具，固化管理规则,标准化作业方法,提高工作效率。<br />
+                                   	（4）提高公司的资源、信息共享服务能力。<br />
+                                      	（5）协助客户建立一支懂业务、懂管理、懂技术的ERP管理队伍。<br />
+						</p>
+					</div>
+					<div class="layui-fluid">
+					<div class="layui-row layui-col-space15">
+						<div class="layui-col-md3" >
+							<div dir="ltr" role="gridcell" >
+								<img src="data:image/png;base64,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" class="Feature--pic--2gKMdJR" alt="">
+								<h3 class="Feature--title--2PBCv9E">违规单据查询</h3>
+								<p class="Feature--desc--RA204Eq">
+									基于实际成本核算要求下的业务监督；快速设置检查条件、快速发现用户违规操作；管理
+									层更加方便实时检查各部门使用系统功能是否准确；是否带来管理风险，快速获取异常及违规数据；通过ERP
+									落实企业管理规则；借助监督平台推动企业持续改善。
+								</p>
+							</div>
+						</div>
+					<div class="layui-col-md9" >
+     						<div class="layui-carousel" id="test1">
+                                 <div carousel-item>
+									    <div width="500px;"><img src="../layuiadmin/img/图片1.png"  style="background-size:cover;"/></div>
+									    <div> <img src="../layuiadmin/img/图片2.png"  width="100%"/></div>
+									   <div> <img src="../layuiadmin/img/违规1.png"  width="100%"/></div>
+							  </div>
+							</div>
+                   </div>
+					</div>
+					</div>
+						<div class="layui-fluid">
+					<div class="layui-row layui-col-space15">
+						<div class="layui-col-md3" >
+							<div dir="ltr" role="gridcell" >
+								<img src="data:image/png;base64,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" class="Feature--pic--2gKMdJR" alt="">
+								<h3 class="Feature--title--2PBCv9E">订单评审表</h3>
+								<p class="Feature--desc--RA204Eq">
+									简化计划与物控的工作，计划物控算料查料工作效率提升20-40％；</br>
+									预防产生呆滞，减少因可用库存不清或业务单据异常导致的物资浪费和采购成本的增加。
+								</p>
+							</div>
+						</div>
+					<div class="layui-col-md9" >
+     						<div class="layui-carousel" id="test2">
+                                 <div carousel-item>
+									    <div><img src="../layuiadmin/img/评审3.png"  width="100%" /></div>
+									    <div> <img src="../layuiadmin/img/评审21.png"  width="100%"/></div>
+									   
+							  </div>
+							</div>
+                   </div>
+					</div>
+					</div>
+					<div class="layui-fluid">
+					<div class="layui-row layui-col-space15">
+						<div class="layui-col-md3" >
+							<div dir="ltr" role="gridcell" >
+								<img src="data:image/png;base64,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" class="Feature--pic--2gKMdJR" alt="">
+								<h3 class="Feature--title--2PBCv9E">物料跟踪表</h3>
+								<p class="Feature--desc--RA204Eq">
+									PC部分：即时掌握整理供需匹配状况；需求变化后课快速评估可行性；直观全面掌握影响生产的供应信息，提前跟进减少异常。<br />
+                                    MC部分：即时获取完整物料需求状况；高效整理出可指导供应商交货的明细；保障仓库收货的计划性；在保障齐套的前提下有效预防呆滞。
+									
+								</p>
+							</div>
+						</div>
+					<div class="layui-col-md9" >
+     						<div class="layui-carousel" id="test3">
+                                 <div carousel-item>
+									    <div><img src="../layuiadmin/img/物料1.png"  width="100%" /></div>
+									    <div> <img src="../layuiadmin/img/物料21.png"  width="100%"/></div>
+									   
+							  </div>
+							</div>
+                   </div>
+					</div>
+					</div>
+					<div class="layui-fluid">
+					<div class="layui-row layui-col-space15">
+						<div class="layui-col-md3" >
+							<div dir="ltr" role="gridcell" >
+								<img src="data:image/png;base64,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" class="Feature--pic--2gKMdJR" alt="">
+								<h3 class="Feature--title--2PBCv9E">采购交期回复</h3>
+								<p class="Feature--desc--RA204Eq">
+									简化计划与物控的工作，计划物控算料查料工作效率提升20-40％；</br>
+									预防产生呆滞，减少因可用库存不清或业务单据异常导致的物资浪费和采购成本的增加。
+								</p>
+							</div>
+						</div>
+					<div class="layui-col-md9" >
+     						<div class="layui-carousel" id="test4">
+                                 <div carousel-item>
+									    <div><img src="../layuiadmin/img/采购1.png"  width="100%" height="100%"/></div>
+									    <div> <img src="../layuiadmin/img/采购2.png"  width="100%" height="100%"/></div>
+									    <div> <img src="../layuiadmin/img/采购3.png"  width="100%" height="100%"/></div>
+									   
+							  </div>
+							</div>
+                   </div>
+					</div>
+					</div>
+							
+					<div class="Introduction--container--C8fs_fr"><h3 class="Introduction--title--1d1j37u">产品价值</h3>
+						<p class="one">
+							    1.&nbsp;ERP界的“交通灯”+“违纪检查摄像头”：按照管理要求制定的流程和节点，设置为“违规”的检查条件，在数据库部署检查条件，一键获取违规单据。<br/>
+                                    2.&nbsp;ERP界的“质检”工具：用户“自检”，形成良好的作业习惯；部门经理“抽检”，发现部门内部违规操作的岗位、人员，督促其改善；IT部门“全检”，<br/>
+                                                                                                   &nbsp;&nbsp;&nbsp;&nbsp;每天定时获取违规数据，制定ERP制度进行以部门的维度考核、评比。三道关卡，确保ERP系统数据的准确性。<br />
+                                    3.&nbsp;集成供应链产供销数据，评估排期的合理性，快速发现异常部门、提供可决策的参考数据；提升生产执行率，改善订单交付率。<br />
+                                    4.&nbsp;保密性、安全性高：供应商、客户等，均在获取数据时根据权限自动加密。<br />
+                                    5.&nbsp;快速、高效获取数据，实时、准确；获取单个功能数据只需几秒，最长不超过3分钟。<br />
+                                    6.&nbsp;提供数据导出功能，分析、存储更方便。<br />
+						</p>
+					</div>
+						
+						</div>
+						<div class="Resource--container--1godGCD"><h3 class="Resource--title--1ttMvRE">体检工具</h3>
+							<div class="Resource--content--245iaqL">
+								<div class="Resource--cellleftContent--3EUEgoL">
+									<div><h6 class="Resource--subTitle--38EWHra">按照每个模块检查数据</h6>
+										<p class="Resource--desc--1ghm3Ue">
+										企业信息化管理360°保障平台；
+									</div><img src="https://gw.alipayobjects.com/zos/rmsportal/VvGnZYfUXGmgkJklZRDH.png_.webp" alt="" class="Resource--imga--3nSHudV">
+								</div>
+								<div class="Resource--cellrightContent--2cIbc0s">
+									<div class="Resource--topItemBodyitemBody--3xKjgue">
+										<div class="Resource--itemBodyImg--Aq1NsRl">
+											<img src="https://img.alicdn.com/tfs/TB1Od0ZnH_I8KJjy1XaXXbsxpXa-276-200.png_.webp" alt="" class="Resource--imgt--1uzeJg0">
+										</div>
+										<div>
+											<h6 class="Resource--subTitle--38EWHra">价值分析-人力资本</h6>
+											<p class="Resource--desc--1ghm3Ue">信息化管理的“质检”工具： 自检&抽检&全检;
+											</p>
+										
+										</div>
+									</div>
+									<div class="Resource--bottomItemBodyitemBody--3uJ3tSH"><div>
+										<h6 class="Resource--subTitle--38EWHra">价值分析-运营效率</h6>
+										<p class="Resource--desc--1ghm3Ue">信息化管理界的“交通灯”+“违纪检查摄像头”</p>
+										
+									</div>
+									<div class="Resource--itemBodyImg--Aq1NsRl">
+										<img src="https://img.alicdn.com/tfs/TB1M00ZnH_I8KJjy1XaXXbsxpXa-352-240.png_.webp" alt="" class="Resource--imgtr--37xOF3g">
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="Footer--container--1quf9tb">
+					<div class="Footer--content--26o7ioz">
+						<!-- <div dir="ltr" role="row" class="next-row">
+							<div dir="ltr" role="gridcell" class="next-col next-col-l-8">
+								<h3 class="Footer--title--3uuO7FW">关于我们</h3>
+								<div>
+									<a class="Footer--link--qi9rtJM">私权政策</a>
+									<a class="Footer--link--qi9rtJM">加入我们</a>
+								</div>
+							</div>
+							<div dir="ltr" role="gridcell" class="next-col next-col-l-8">
+								<h3 class="Footer--title--3uuO7FW">使用帮助</h3>
+								<div>
+									<a class="Footer--link--qi9rtJM">联系我们</a>
+									<a class="Footer--link--qi9rtJM">使用文档</a>
+								</div>
+							</div>
+							<div dir="ltr" role="gridcell" class="next-col next-col-l-8">
+								<h3 class="Footer--title--3uuO7FW">使用答疑群</h3>
+								<img src="https://ice.alicdn.com/assets/images/qrcode.png" alt="qr-code" class="Footer--qrcode--2roc0GV">
+							</div>
+						</div> -->
+					
+					</div>
+				</div>
+			</div>
+		<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '#test1'
+    ,height:'600px'
+    ,width: '100%' //设置容器宽度
+    ,arrow: 'always' //始终显示箭头
+    //,anim: 'updown' //切换动画方式
+  });
+});
+layui.use('carousel', function(){
+	  var carousel = layui.carousel;
+	  //建造实例
+	  carousel.render({
+	    elem: '#test2'
+	    ,width: '100%' //设置容器宽度
+	    ,arrow: 'always' //始终显示箭头
+	    //,anim: 'updown' //切换动画方式
+	  });
+	});
+layui.use('carousel', function(){
+	  var carousel = layui.carousel;
+	  //建造实例
+	  carousel.render({
+	    elem: '#test3'
+	    ,width: '100%' //设置容器宽度
+	    ,arrow: 'always' //始终显示箭头
+	    //,anim: 'updown' //切换动画方式
+	  });
+	});
+layui.use('carousel', function(){
+	  var carousel = layui.carousel;
+	  //建造实例
+	  carousel.render({
+	    elem: '#test4'
+	    ,height:'600px'
+	    ,width: '100%' //设置容器宽度
+	    ,arrow: 'always' //始终显示箭头
+	    //,anim: 'updown' //切换动画方式
+	  });
+	});
+</script> 
+		
+	</body>
+</html>

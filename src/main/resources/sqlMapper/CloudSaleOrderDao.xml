@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qm.dao.CloudSaleOrderDao">
+  <resultMap id="BaseResultMap" type="com.qm.entity.CloudSaleOrder">
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="UserId" jdbcType="VARCHAR" property="userId" />
+    <result column="FID" jdbcType="VARCHAR" property="FID" />
+    <result column="FBillNo" jdbcType="VARCHAR" property="FBillNo" />
+    <result column="FDate" jdbcType="TIMESTAMP" property="FDate" />
+    <result column="FDOCUMENTSTATUS" jdbcType="VARCHAR" property="FDOCUMENTSTATUS" />
+    <result column="FCANCELSTATUS" jdbcType="VARCHAR" property="FCANCELSTATUS" />
+    <result column="FSALEORGID" jdbcType="VARCHAR" property="FSALEORGID" />
+    <result column="FSALEORGName" jdbcType="VARCHAR" property="FSALEORGName" />
+    <result column="FCREATORID" jdbcType="VARCHAR" property="FCREATORID" />
+    <result column="FCREATORName" jdbcType="VARCHAR" property="FCREATORName" />
+    <result column="FMaterialID" jdbcType="VARCHAR" property="FMaterialID" />
+    <result column="FMaterialName" jdbcType="VARCHAR" property="FMaterialName" />
+    <result column="FMaterialNumber" jdbcType="VARCHAR" property="FMaterialNumber" />
+    <result column="FSPECIFICATION" jdbcType="VARCHAR" property="FSPECIFICATION" />
+    <result column="FQTY" jdbcType="VARCHAR" property="FQTY" />
+    <result column="FSTOCKOUTQTY" jdbcType="VARCHAR" property="FSTOCKOUTQTY" />
+    <result column="FDELIVERYDATE" jdbcType="TIMESTAMP" property="FDELIVERYDATE" />
+    <result column="FMRPCLOSESTATUS" jdbcType="VARCHAR" property="FMRPCLOSESTATUS" />
+    <result column="FMRPTERMINATESTATUS" jdbcType="VARCHAR" property="FMRPTERMINATESTATUS" />
+    <result column="FMRPFREEZESTATUS" jdbcType="VARCHAR" property="FMRPFREEZESTATUS" />
+    <result column="FCLOSESTATUS" jdbcType="VARCHAR" property="FCLOSESTATUS" />
+    <result column="illegalId" jdbcType="BIGINT" property="illegalId" />
+    <result column="getTime" jdbcType="TIMESTAMP" property="getTime" />
+    <result column="enterpriseId" jdbcType="BIGINT" property="enterpriseId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, UserId, FID, FBillNo, FDate, FDOCUMENTSTATUS, FCANCELSTATUS, FSALEORGID, FSALEORGName, 
+    FCREATORID, FCREATORName, FMaterialID, FMaterialName, FMaterialNumber, FSPECIFICATION, 
+    FQTY, FSTOCKOUTQTY, FDELIVERYDATE, FMRPCLOSESTATUS, FMRPTERMINATESTATUS, FMRPFREEZESTATUS,
+    FCLOSESTATUS, illegalId, getTime, enterpriseId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cloudsaleorder
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cloudsaleorder
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qm.entity.CloudSaleOrder">
+    insert into cloudsaleorder (Id, UserId, FID, 
+      FBillNo, FDate, FDOCUMENTSTATUS, 
+      FCANCELSTATUS, FSALEORGID, FSALEORGName, 
+      FCREATORID, FCREATORName, FMaterialID, 
+      FMaterialName, FMaterialNumber, FSPECIFICATION, 
+      FQTY, FSTOCKOUTQTY, FDELIVERYDATE, 
+      FMRPCLOSESTATUS, FMRPTERMINATESTATUS, FMRPFREEZESTATUS, 
+      FCLOSESTATUS, illegalId, getTime, 
+      enterpriseId)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{FID,jdbcType=VARCHAR}, 
+      #{FBillNo,jdbcType=VARCHAR}, #{FDate,jdbcType=TIMESTAMP}, #{FDOCUMENTSTATUS,jdbcType=VARCHAR}, 
+      #{FCANCELSTATUS,jdbcType=VARCHAR}, #{FSALEORGID,jdbcType=VARCHAR}, #{FSALEORGName,jdbcType=VARCHAR}, 
+      #{FCREATORID,jdbcType=VARCHAR}, #{FCREATORName,jdbcType=VARCHAR}, #{FMaterialID,jdbcType=VARCHAR}, 
+      #{FMaterialName,jdbcType=VARCHAR}, #{FMaterialNumber,jdbcType=VARCHAR}, #{FSPECIFICATION,jdbcType=VARCHAR}, 
+      #{FQTY,jdbcType=VARCHAR}, #{FSTOCKOUTQTY,jdbcType=VARCHAR}, #{FDELIVERYDATE,jdbcType=TIMESTAMP}, 
+      #{FMRPCLOSESTATUS,jdbcType=VARCHAR}, #{FMRPTERMINATESTATUS,jdbcType=VARCHAR}, #{FMRPFREEZESTATUS,jdbcType=VARCHAR}, 
+      #{FCLOSESTATUS,jdbcType=VARCHAR}, #{illegalId,jdbcType=BIGINT}, #{getTime,jdbcType=TIMESTAMP}, 
+      #{enterpriseId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qm.entity.CloudSaleOrder">
+    insert into cloudsaleorder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userId != null">
+        UserId,
+      </if>
+      <if test="FID != null">
+        FID,
+      </if>
+      <if test="FBillNo != null">
+        FBillNo,
+      </if>
+      <if test="FDate != null">
+        FDate,
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        FDOCUMENTSTATUS,
+      </if>
+      <if test="FCANCELSTATUS != null">
+        FCANCELSTATUS,
+      </if>
+      <if test="FSALEORGID != null">
+        FSALEORGID,
+      </if>
+      <if test="FSALEORGName != null">
+        FSALEORGName,
+      </if>
+      <if test="FCREATORID != null">
+        FCREATORID,
+      </if>
+      <if test="FCREATORName != null">
+        FCREATORName,
+      </if>
+      <if test="FMaterialID != null">
+        FMaterialID,
+      </if>
+      <if test="FMaterialName != null">
+        FMaterialName,
+      </if>
+      <if test="FMaterialNumber != null">
+        FMaterialNumber,
+      </if>
+      <if test="FSPECIFICATION != null">
+        FSPECIFICATION,
+      </if>
+      <if test="FQTY != null">
+        FQTY,
+      </if>
+      <if test="FSTOCKOUTQTY != null">
+        FSTOCKOUTQTY,
+      </if>
+      <if test="FDELIVERYDATE != null">
+        FDELIVERYDATE,
+      </if>
+      <if test="FMRPCLOSESTATUS != null">
+        FMRPCLOSESTATUS,
+      </if>
+      <if test="FMRPTERMINATESTATUS != null">
+        FMRPTERMINATESTATUS,
+      </if>
+      <if test="FMRPFREEZESTATUS != null">
+        FMRPFREEZESTATUS,
+      </if>
+      <if test="FCLOSESTATUS != null">
+        FCLOSESTATUS,
+      </if>
+      <if test="illegalId != null">
+        illegalId,
+      </if>
+      <if test="getTime != null">
+        getTime,
+      </if>
+      <if test="enterpriseId != null">
+        enterpriseId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="FID != null">
+        #{FID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBillNo != null">
+        #{FBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="FDate != null">
+        #{FDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FCANCELSTATUS != null">
+        #{FCANCELSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FSALEORGID != null">
+        #{FSALEORGID,jdbcType=VARCHAR},
+      </if>
+      <if test="FSALEORGName != null">
+        #{FSALEORGName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORID != null">
+        #{FCREATORID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORName != null">
+        #{FCREATORName,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialID != null">
+        #{FMaterialID,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialName != null">
+        #{FMaterialName,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialNumber != null">
+        #{FMaterialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="FSPECIFICATION != null">
+        #{FSPECIFICATION,jdbcType=VARCHAR},
+      </if>
+      <if test="FQTY != null">
+        #{FQTY,jdbcType=VARCHAR},
+      </if>
+      <if test="FSTOCKOUTQTY != null">
+        #{FSTOCKOUTQTY,jdbcType=VARCHAR},
+      </if>
+      <if test="FDELIVERYDATE != null">
+        #{FDELIVERYDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FMRPCLOSESTATUS != null">
+        #{FMRPCLOSESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FMRPTERMINATESTATUS != null">
+        #{FMRPTERMINATESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FMRPFREEZESTATUS != null">
+        #{FMRPFREEZESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FCLOSESTATUS != null">
+        #{FCLOSESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="illegalId != null">
+        #{illegalId,jdbcType=BIGINT},
+      </if>
+      <if test="getTime != null">
+        #{getTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qm.entity.CloudSaleOrder">
+    update cloudsaleorder
+    <set>
+      <if test="userId != null">
+        UserId = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="FID != null">
+        FID = #{FID,jdbcType=VARCHAR},
+      </if>
+      <if test="FBillNo != null">
+        FBillNo = #{FBillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="FDate != null">
+        FDate = #{FDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FDOCUMENTSTATUS != null">
+        FDOCUMENTSTATUS = #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FCANCELSTATUS != null">
+        FCANCELSTATUS = #{FCANCELSTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FSALEORGID != null">
+        FSALEORGID = #{FSALEORGID,jdbcType=VARCHAR},
+      </if>
+      <if test="FSALEORGName != null">
+        FSALEORGName = #{FSALEORGName,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORID != null">
+        FCREATORID = #{FCREATORID,jdbcType=VARCHAR},
+      </if>
+      <if test="FCREATORName != null">
+        FCREATORName = #{FCREATORName,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialID != null">
+        FMaterialID = #{FMaterialID,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialName != null">
+        FMaterialName = #{FMaterialName,jdbcType=VARCHAR},
+      </if>
+      <if test="FMaterialNumber != null">
+        FMaterialNumber = #{FMaterialNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="FSPECIFICATION != null">
+        FSPECIFICATION = #{FSPECIFICATION,jdbcType=VARCHAR},
+      </if>
+      <if test="FQTY != null">
+        FQTY = #{FQTY,jdbcType=VARCHAR},
+      </if>
+      <if test="FSTOCKOUTQTY != null">
+        FSTOCKOUTQTY = #{FSTOCKOUTQTY,jdbcType=VARCHAR},
+      </if>
+      <if test="FDELIVERYDATE != null">
+        FDELIVERYDATE = #{FDELIVERYDATE,jdbcType=TIMESTAMP},
+      </if>
+      <if test="FMRPCLOSESTATUS != null">
+        FMRPCLOSESTATUS = #{FMRPCLOSESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FMRPTERMINATESTATUS != null">
+        FMRPTERMINATESTATUS = #{FMRPTERMINATESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FMRPFREEZESTATUS != null">
+        FMRPFREEZESTATUS = #{FMRPFREEZESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="FCLOSESTATUS != null">
+        FCLOSESTATUS = #{FCLOSESTATUS,jdbcType=VARCHAR},
+      </if>
+      <if test="illegalId != null">
+        illegalId = #{illegalId,jdbcType=BIGINT},
+      </if>
+      <if test="getTime != null">
+        getTime = #{getTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enterpriseId != null">
+        enterpriseId = #{enterpriseId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qm.entity.CloudSaleOrder">
+    update cloudsaleorder
+    set UserId = #{userId,jdbcType=VARCHAR},
+      FID = #{FID,jdbcType=VARCHAR},
+      FBillNo = #{FBillNo,jdbcType=VARCHAR},
+      FDate = #{FDate,jdbcType=TIMESTAMP},
+      FDOCUMENTSTATUS = #{FDOCUMENTSTATUS,jdbcType=VARCHAR},
+      FCANCELSTATUS = #{FCANCELSTATUS,jdbcType=VARCHAR},
+      FSALEORGID = #{FSALEORGID,jdbcType=VARCHAR},
+      FSALEORGName = #{FSALEORGName,jdbcType=VARCHAR},
+      FCREATORID = #{FCREATORID,jdbcType=VARCHAR},
+      FCREATORName = #{FCREATORName,jdbcType=VARCHAR},
+      FMaterialID = #{FMaterialID,jdbcType=VARCHAR},
+      FMaterialName = #{FMaterialName,jdbcType=VARCHAR},
+      FMaterialNumber = #{FMaterialNumber,jdbcType=VARCHAR},
+      FSPECIFICATION = #{FSPECIFICATION,jdbcType=VARCHAR},
+      FQTY = #{FQTY,jdbcType=VARCHAR},
+      FSTOCKOUTQTY = #{FSTOCKOUTQTY,jdbcType=VARCHAR},
+      FDELIVERYDATE = #{FDELIVERYDATE,jdbcType=TIMESTAMP},
+      FMRPCLOSESTATUS = #{FMRPCLOSESTATUS,jdbcType=VARCHAR},
+      FMRPTERMINATESTATUS = #{FMRPTERMINATESTATUS,jdbcType=VARCHAR},
+      FMRPFREEZESTATUS = #{FMRPFREEZESTATUS,jdbcType=VARCHAR},
+      FCLOSESTATUS = #{FCLOSESTATUS,jdbcType=VARCHAR},
+      illegalId = #{illegalId,jdbcType=BIGINT},
+      getTime = #{getTime,jdbcType=TIMESTAMP},
+      enterpriseId = #{enterpriseId,jdbcType=BIGINT}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 根据条件获取列表 illegalId违规类型和公司id必填-->
+   <select id="getList" parameterType="com.qm.entity.CloudSaleOrder" resultType="com.qm.entity.CloudSaleOrder">
+    select 
+    <include refid="Base_Column_List" />
+    from cloudsaleorder
+    <where>
+  		illegalId = #{illegalId}
+  		and enterpriseId = #{enterpriseId,jdbcType=BIGINT}
+  		<if test="FMaterialNumber != null and FMaterialNumber !='' ">
+  			and FMaterialNumber like concat('%',#{FMaterialNumber},'%')
+  		</if>
+  		<if test="FMaterialName != null and FMaterialName !='' ">
+  			and FMaterialName like concat('%',#{FMaterialName},'%')
+  		</if>
+  		<if test="FSPECIFICATION != null and FSPECIFICATION !='' ">
+  			and FSPECIFICATION like concat('%',#{FSPECIFICATION},'%')
+  		</if>
+  	</where>
+  </select>
+  <!-- 判断是否存在本公司数据 -->
+  <select id="selectByEnterpriseId" parameterType="java.lang.Long" resultType="int">
+    select 
+    	count(1)
+    from cloudsaleorder
+    where enterpriseId = #{enterpriseId,jdbcType=BIGINT}
+  </select>
+  <!-- 查询前删除本公司数据 -->
+  <delete id="deleteByEnterpriseId" parameterType="java.lang.Long">
+    delete from cloudsaleorder
+    where enterpriseId = #{enterpriseId,jdbcType=BIGINT}
+  </delete>
+  <!-- 根据违规类型统计数量 -->
+  <select id="countByIllegalId" parameterType="java.lang.Long" resultType="int">
+    select 
+    	count(1)
+    from cloudsaleorder
+    where illegalId = #{illegalId}
+  </select>
+</mapper>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qm.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.qm.entity.User">
+    <id column="Id" jdbcType="BIGINT" property="id" />
+    <result column="userId" jdbcType="BIGINT" property="userId" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="enterpriseId" jdbcType="VARCHAR" property="enterpriseId" />
+    <result column="enterpriseName" jdbcType="VARCHAR" property="enterpriseName" />
+    <result column="accessToken" jdbcType="VARCHAR" property="accessToken" />
+    <result column="systemType" jdbcType="VARCHAR" property="systemType" />
+    <result column="roleId" jdbcType="VARCHAR" property="roleId" />
+    <result column="roleName" jdbcType="VARCHAR" property="roleName" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.qm.entity.User">
+    <result column="avatarUrl" jdbcType="LONGVARCHAR" property="avatarUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, userId, userName, enterpriseId, enterpriseName, accessToken, systemType, roleId, 
+    roleName
+  </sql>
+  <sql id="Blob_Column_List">
+    avatarUrl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where Id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where Id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.qm.entity.User">
+    insert into user (Id, userId, userName, 
+      enterpriseId, enterpriseName, accessToken, 
+      systemType, roleId, roleName, 
+      avatarUrl)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{enterpriseId,jdbcType=VARCHAR}, #{enterpriseName,jdbcType=VARCHAR}, #{accessToken,jdbcType=VARCHAR}, 
+      #{systemType,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, 
+      #{avatarUrl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qm.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="userName != null">
+        userName,
+      </if>
+      <if test="enterpriseId != null">
+        enterpriseId,
+      </if>
+      <if test="enterpriseName != null">
+        enterpriseName,
+      </if>
+      <if test="accessToken != null">
+        accessToken,
+      </if>
+      <if test="systemType != null">
+        systemType,
+      </if>
+      <if test="roleId != null">
+        roleId,
+      </if>
+      <if test="roleName != null">
+        roleName,
+      </if>
+      <if test="avatarUrl != null">
+        avatarUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseName != null">
+        #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null">
+        #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        #{avatarUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qm.entity.User">
+    update user
+    <set>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        enterpriseId = #{enterpriseId,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseName != null">
+        enterpriseName = #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null">
+        accessToken = #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="systemType != null">
+        systemType = #{systemType,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        roleId = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        roleName = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarUrl != null">
+        avatarUrl = #{avatarUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qm.entity.User">
+    update user
+    set userId = #{userId,jdbcType=BIGINT},
+      userName = #{userName,jdbcType=VARCHAR},
+      enterpriseId = #{enterpriseId,jdbcType=VARCHAR},
+      enterpriseName = #{enterpriseName,jdbcType=VARCHAR},
+      accessToken = #{accessToken,jdbcType=VARCHAR},
+      systemType = #{systemType,jdbcType=VARCHAR},
+      roleId = #{roleId,jdbcType=VARCHAR},
+      roleName = #{roleName,jdbcType=VARCHAR},
+      avatarUrl = #{avatarUrl,jdbcType=LONGVARCHAR}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qm.entity.User">
+    update user
+    set userId = #{userId,jdbcType=BIGINT},
+      userName = #{userName,jdbcType=VARCHAR},
+      enterpriseId = #{enterpriseId,jdbcType=VARCHAR},
+      enterpriseName = #{enterpriseName,jdbcType=VARCHAR},
+      accessToken = #{accessToken,jdbcType=VARCHAR},
+      systemType = #{systemType,jdbcType=VARCHAR},
+      roleId = #{roleId,jdbcType=VARCHAR},
+      roleName = #{roleName,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
